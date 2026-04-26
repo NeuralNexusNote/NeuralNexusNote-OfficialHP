@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | NeuralNexusNote</title>
+  <meta name="description" content="NeuralNexusNoteへのお問い合わせページです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">NeuralNexusNote</a>
+    <nav>
+      <a href="index.html#products">製品</a>
+      <a href="index.html#howto">購入方法</a>
+      <a href="index.html#about">組織について</a>
+      <a href="contact.html" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>お問い合わせ</h1>
+      <p>ご質問・ご要望はお気軽にご連絡ください。</p>
+    </div>
+  </div>
+
+  <div class="contact-wrap">
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h3>連絡先</h3>
+
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <div class="c-lbl">メールアドレス</div>
+          <div class="c-val">
+            <a href="mailto:info@neuralnexusnote.com">info@neuralnexusnote.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <div class="c-lbl">所在地</div>
+          <div class="c-val">
+            〒105-0013<br>
+            東京都港区浜松町２丁目２番１５号<br>
+            浜松町ダイヤビル２Ｆ
+          </div>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-icon">📞</div>
+        <div>
+          <div class="c-lbl">電話番号</div>
+          <div class="c-val">090-4571-1363</div>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-icon">💻</div>
+        <div>
+          <div class="c-lbl">GitHub</div>
+          <div class="c-val">
+            <a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">github.com/NeuralNexusNote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-note">
+        通常、2営業日以内にご返信いたします。<br>
+        お問い合わせはメールが最も確実です。
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="form-card">
+      <h3>お問い合わせフォーム</h3>
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">お名前 <span style="color:var(--purple-l)">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス <span style="color:var(--purple-l)">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">件名 <span style="color:var(--purple-l)">*</span></label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>お問い合わせの種類を選択</option>
+            <option value="製品について">製品・機能についての質問</option>
+            <option value="購入・支払いについて">購入・支払いについて</option>
+            <option value="技術的な問題">技術的な問題・バグ報告</option>
+            <option value="返金・キャンセルについて">返金・キャンセルについて</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product">対象製品（任意）</label>
+          <select id="product" name="product">
+            <option value="" selected>選択してください</option>
+            <option value="N3MC Free">N3MC Free</option>
+            <option value="N3MC Pro">N3MC Pro</option>
+            <option value="N3MCMCP Lite">N3MCMCP Lite</option>
+            <option value="N3MCMCP Pro">N3MCMCP Pro</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">お問い合わせ内容 <span style="color:var(--purple-l)">*</span></label>
+          <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください。"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">送信する</button>
+        <p class="form-note">
+          送信ボタンを押すと、メールアプリが開きます。送信内容をご確認の上、送信してください。<br>
+          メールアプリをお使いでない場合は、直接 <a href="mailto:info@neuralnexusnote.com">info@neuralnexusnote.com</a> までご連絡ください。
+        </p>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">NeuralNexusNote</a>
+        <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
+      </div>
+      <div class="footer-col">
+        <h4>製品・サービス</h4>
+        <ul>
+          <li><a href="index.html#products">N3MC Free</a></li>
+          <li><a href="index.html#howto">N3MC Pro</a></li>
+          <li><a href="index.html#products">N3MCMCP Lite</a></li>
+          <li><a href="index.html#howto">N3MCMCP Pro</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法的情報・サポート</h4>
+        <ul>
+          <li><a href="tokutei.html">特定商取引法に基づく表記</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NeuralNexusNote. All rights reserved.</p>
+      <div class="footer-links-row">
+        <a href="tokutei.html">特定商取引法</a>
+        <a href="privacy.html">プライバシー</a>
+        <a href="terms.html">利用規約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('name').value;
+    const email   = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const product = document.getElementById('product').value;
+    const message = document.getElementById('message').value;
+
+    const body = [
+      'お名前: ' + name,
+      'メールアドレス: ' + email,
+      product ? '対象製品: ' + product : '',
+      '',
+      message
+    ].filter(Boolean).join('\n');
+
+    window.location.href =
+      'mailto:info@neuralnexusnote.com'
+      + '?subject=' + encodeURIComponent('[お問い合わせ] ' + subject)
+      + '&body='    + encodeURIComponent(body);
+  });
+</script>
+
+</body>
+</html>
