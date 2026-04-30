@@ -140,9 +140,9 @@ section { padding: 80px 0; }
   justify-content: center;
   margin-top: 36px;
 }
-.hero-img-col { flex: 0 1 420px; }
+.hero-img-col { flex: 0 1 420px; min-width: 0; }
 .hero-img-col img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); }
-.hero-video-panel { flex: 0 1 480px; text-align: left; }
+.hero-video-panel { flex: 0 1 480px; min-width: 0; text-align: left; }
 
 .hero-quote {
   border-left: 3px solid var(--purple);
