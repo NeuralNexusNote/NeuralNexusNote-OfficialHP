@@ -179,6 +179,10 @@ section { padding: 80px 0; }
   color: var(--dim); transition: all .2s;
 }
 .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan-l); }
+.btn-disabled {
+  background: rgba(255,255,255,.06); border: 1px solid var(--border);
+  color: var(--dim); cursor: not-allowed; pointer-events: none;
+}
 
 .launch-box {
   background: rgba(124,58,237,.07);
