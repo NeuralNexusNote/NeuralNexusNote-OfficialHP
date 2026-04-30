@@ -132,6 +132,41 @@ section { padding: 80px 0; }
 }
 .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+/* ===== HERO VIDEO PANEL ===== */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  text-align: left;
+}
+.hero-text .hero-sub { margin: 0 0 36px; }
+.hero-text .btn-row { justify-content: flex-start; }
+
+.hero-quote {
+  border-left: 3px solid var(--purple);
+  padding-left: 14px;
+  margin: 0 0 16px;
+}
+.hero-quote p { margin: 0; font-size: .88rem; color: var(--text); line-height: 1.6; }
+.hero-quote-en { color: var(--dim) !important; font-style: italic; font-size: .8rem !important; margin-top: 4px !important; }
+
+.video-wrap {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  border-radius: 10px; border: 1px solid var(--border);
+}
+.video-wrap iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.video-desc {
+  font-size: .84rem; color: var(--dim);
+  margin: 12px 0 6px; line-height: 1.65;
+}
+.video-full-link { font-size: .82rem; margin: 0; }
+.video-full-link a { color: var(--purple-l); text-decoration: underline; }
+.video-full-link a:hover { color: var(--cyan-l); }
+
 /* ===== PRODUCT CARDS ===== */
 .products-grid {
   display: grid;
@@ -352,6 +387,10 @@ footer {
 @media (max-width: 768px) {
   nav { gap: 16px; flex-wrap: wrap; justify-content: center; }
   .hero { padding: 60px 0 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-text .hero-sub { margin: 0 auto 36px; }
+  .hero-text .btn-row { justify-content: center; }
+  .hero-quote { text-align: left; }
   .about-wrap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
   .footer-bottom { flex-direction: column; text-align: center; }
