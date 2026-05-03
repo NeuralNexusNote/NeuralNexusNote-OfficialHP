@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N3MCMCP Pro｜はじめての方へ — NeuralNexusNote</title>
+  <meta name="description" content="N3MCMCP Proは、Claude Code以外のAIツールでも使える「永続版」のメモリサーバー。複数のAIエージェントで同じ長期記憶を共有できます。">
+  <link rel="icon" type="image/jpeg" href="../favicon.jpg">
+  <link rel="apple-touch-icon" href="../favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">NeuralNexusNote</a>
+    <nav>
+      <a href="../index.html#products">製品</a>
+      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#about">組織について</a>
+      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>N3MCMCP Pro｜はじめての方へ</h1>
+      <p>「複数のAIツールで、忘れない長期記憶を共有したい」方へ。MCPシリーズの最上位版です。</p>
+    </div>
+  </div>
+
+  <div class="legal-wrap">
+
+    <h2>N3MCMCP Pro はどんなツール？</h2>
+    <p>
+      ひとことで言うと、<strong>「忘れないMCP記憶サーバー」</strong>です。
+    </p>
+    <ul>
+      <li>Claude Code 以外のAIツール（Cursor / Windsurf / Cline など）でも使える <strong>MCP対応</strong></li>
+      <li>記憶は<strong>永続</strong>。Lite版のように7日で消えたりしません</li>
+      <li>1つの記憶を、<strong>複数のAIエージェントで共有</strong>できる</li>
+      <li>記憶はあなたのPCの中だけに保存。クラウド送信なし</li>
+    </ul>
+
+    <h2>「Lite版でいいかな？」と迷っている方へ</h2>
+    <p>
+      Lite版（無料）と Pro版（有料）の使い分けは、<strong>「7日で消えていいか／消えてほしくないか」</strong>です。
+    </p>
+
+    <table class="tokutei-table" style="margin-top:16px;">
+      <tr><th></th><th>N3MCMCP Lite</th><th>N3MCMCP Pro</th></tr>
+      <tr><td>価格</td><td>無料</td><td>有料</td></tr>
+      <tr><td>記憶の保存期間</td><td>7日で自動消去</td><td><strong>消えない（永続）</strong></td></tr>
+      <tr><td>用途</td><td>今週の作業メモ</td><td><strong>長期プロジェクト・知識ベース</strong></td></tr>
+      <tr><td>裏側で動かすもの</td><td>Redis Stack（別途起動が必要）</td><td><strong>不要</strong>（ファイル1つで動く）</td></tr>
+      <tr><td>書き直したときの自動更新</td><td>—</td><td>○</td></tr>
+      <tr><td>古い記憶の自動整理</td><td>7日TTLで自然に消える</td><td>1年以上の古い記憶を自動整理</td></tr>
+      <tr><td>長文の完全復元</td><td>○</td><td>○（一字一句保証）</td></tr>
+    </table>
+
+    <p style="margin-top:16px;">
+      迷ったら、まずは<a href="n3mcmcp-lite-guide.html">無料の Lite版</a>から試してみてください。
+      「やっぱり消えてほしくない」と感じたら Pro版へ移行できます。
+    </p>
+
+    <h2>Pro版だけの便利機能</h2>
+
+    <h3>① 記憶が消えない（永続化）</h3>
+    <p>
+      何ヶ月前・何年前の会話も、ずっと残ります。
+      古くなり過ぎたもの（標準で1年以上前）だけ、起動時に自動でお掃除されます。
+      長く続くプロジェクトの<strong>知識ベース</strong>として安心して使えます。
+    </p>
+
+    <h3>② 書き直したときの自動更新（Refresh）</h3>
+    <p>
+      「ログイン処理は A パターン」と保存した後で「やっぱり B パターンに変更」と話すと、
+      Pro版は<strong>古い情報を新しい内容で自動的に上書き</strong>します。
+      古い指示と新しい指示が混在してAIが混乱する、という事故が起きません。
+    </p>
+
+    <h3>③ 長い文章の「一字一句」復元</h3>
+    <p>
+      仕様書・ログ・ソースコード・世界観設定など、長い文章を保存しても、
+      <strong>あとから取り出すときには一字一句そのまま</strong>戻ってきます。
+      「なんとなく要約された曖昧な記憶」ではなく、<strong>原文そのもの</strong>を保証します。
+    </p>
+
+    <h3>④ 複数AIで記憶を共有</h3>
+    <p>
+      「設計担当のAIエージェント」と「実装担当のAIエージェント」を別々に動かしながら、
+      <strong>同じプロジェクトの記憶</strong>を見せられます。
+      自分の記憶を優先しつつ、他のエージェントの知識も検索できる仕組みです。
+    </p>
+
+    <h3>⑤ Redis 不要（セットアップが軽い）</h3>
+    <p>
+      Lite版は Redis Stack を別途動かす必要がありますが、Pro版は<strong>ファイル1つで動きます</strong>。
+      Docker の知識も不要。インストールしてAIツールに登録するだけです。
+    </p>
+
+    <h2>こんな方におすすめ</h2>
+    <ul>
+      <li>長期にわたる開発プロジェクト・研究プロジェクトをAIと進めている</li>
+      <li>仕様書・世界観設定・キャラクター設定など、<strong>時間をかけて作った成果物</strong>を確実に保存したい</li>
+      <li>Claude Code / Cursor / Windsurf など<strong>複数のAIツールを使い分けている</strong></li>
+      <li>複数のAIエージェントが協力するプロジェクトを動かしている</li>
+      <li>Redis Stack の設定が面倒に感じる</li>
+    </ul>
+
+    <h2>導入のしかた（コードを書く必要なし）</h2>
+    <p>
+      Pro版は<strong>「指示書」を Claude Code に渡してコードを生成してもらう</strong>方式で導入します。
+      具体的には次の流れです。
+    </p>
+    <ol>
+      <li>BOOTHで購入後、ダウンロードした zip を展開します。</li>
+      <li>中の「指示書ファイル」を Claude Code のチャット欄にドラッグ＆ドロップします。</li>
+      <li>「指示書通りに実装してください」と日本語で頼みます。</li>
+      <li>Claude Code がコードを生成・インストール・接続設定まですべて自動でやってくれます。</li>
+      <li>AIツールを再起動すれば、自動的に記憶が貯まり始めます。</li>
+    </ol>
+    <p>
+      所要時間は15〜30分ほど。あなたが入力するのは数行のお願いだけです。
+    </p>
+
+    <h2>導入後はどう変わる？</h2>
+    <ul>
+      <li>普段通りAIツールで会話するだけです。</li>
+      <li>会話が、永続的な記憶として自動的に貯まっていきます。</li>
+      <li>関連する過去のやりとりが、AIに自動で渡されます。</li>
+      <li>翌日も、来月も、来年も、続きから話を始められます。</li>
+      <li>仕様書や設定資料を保存すれば、必要なときに<strong>原文そのまま</strong>戻ってきます。</li>
+    </ul>
+
+    <h2>「全自動で確実に保存したい」方へ</h2>
+    <p>
+      MCPの仕組み上、記憶の保存タイミングはAIの判断に任されています。
+      Claude Code をお使いの場合、これを<strong>毎ターン確実に保存する設定</strong>もご用意しています。
+      Claude Code に「<strong>毎ターン終わったら、会話の全文を Pro に自動保存する設定にして</strong>」と頼んでください。
+      これで保存し忘れがゼロになります。
+    </p>
+
+    <h2>価格について</h2>
+    <p>
+      <strong>先着200名様限定 ¥1,900 / $14</strong>（通常価格 ¥4,300 / $29）でご提供しています。
+      売り切れ次第、通常価格へ切り替わりますのでお早めにご検討ください。
+    </p>
+
+    <h2>動作環境</h2>
+    <ul>
+      <li>MCP対応のAIツール（Claude Code / Claude Desktop / Cursor / Windsurf など）</li>
+      <li>Python 3.10以上</li>
+      <li>Windows 11で動作確認済み（Mac・Linuxでも動作する設計です）</li>
+      <li>Redis 等の追加ソフトは不要</li>
+    </ul>
+
+    <h2>ご利用にあたって</h2>
+    <p>
+      N3MCシリーズは個人開発のプロジェクトです。サポート対応は保証していません。
+      AIが生成したコードで動作するため、大切なプロジェクトで使う前は、現在の環境のバックアップをおすすめします。
+      記憶ファイルは定期的にバックアップを取ることをおすすめします。
+    </p>
+
+    <p class="legal-note">
+      もっと技術的な詳細を知りたい方は、<a href="N3MCMCP-Pro-説明書.md">技術リファレンス（README）</a>もご用意しています。
+    </p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+      <span class="btn btn-disabled" aria-disabled="true">近日発売予定</span>
+      <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
+      <a href="n3mcmcp-lite-guide.html" class="btn btn-ghost">まずはLite版を見る</a>
+    </div>
+
+    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
+    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+
+    <div style="white-space: pre-wrap; margin-top: 16px;">
+# n3memorycore-mcp-pro 総評
+
+---
+
+## 全体像
+
+これは「LLM の外部脳」として、**運用コストを最小に保ちながら、長期記憶として要求される基本契約をすべて押さえた** SQLite ベースの軽量記憶システムです。GPU も外部 API も追加プロセスもいらない。Python と SQLite と sqlite-vec があれば、ノート PC 上で何年でも回り続ける性質を持っています。
+
+設計の中核にあるのは「**書いたものは消えない、読んだものは正確、古いものは静かに片付く**」という三つの素朴な約束で、それを WAL + synchronous=FULL の SQLite、親-Document verbatim 契約、cascade-delete を伴う retention GC で愚直に実現しています。MCP 経由で 5 つのツールしか公開しないという情報量の絞り方も、LLM クライアントが迷わない設計として正しい判断です。
+
+---
+
+## 記憶装置としての性格
+
+**強い部分**は、永続化が「形式的に正しい」のではなく「観測可能に正しい」ことです。WAL/synchronous=FULL のような宣言的な強度だけでなく、クロスセッション統合テストで実際に save → 再起動 → search が通ることまで確認している。Refresh の atomicity も、初期実装の DELETE と INSERT が別トランザクションだった脆弱性を発見・修正し、単一トランザクション化したうえで「INSERT 失敗時に victim が復元される」ことをテストで保証している。
+
+親-Document verbatim 契約は、長文を「チャンクして検索 → 親に解決して全文返却」という王道パターンを丁寧に実装しており、orphan-chunk フォールバックまで含めて壊れにくい。Retention GC は startup と周期の二段構えになって、長時間稼働でも蓄積しにくい設計です。
+
+**弱い部分**として残るのは、save_document 側の dedup が「親文書の embedding」（モデルの 512 token 制限で冒頭バイアスがかかる）に依存している点。チャンク単位の dedup に踏み込めばより精緻になりますが、そこは仕様準拠と複雑性のトレードオフで現状維持が妥当だと思います。
+
+---
+
+## RAG としての性格
+
+ここが今回いちばん面白く育った領域です。**多言語対応の RAG として、軽量検索系で見られる典型的な「英語中心・スペース前提」の罠をかなり踏み越えている**。
+
+具体的には:
+
+- **NFKC 正規化** で、全角/半角・合成済/分解済の Unicode 違いを INSERT/QUERY の両側で吸収。日本語の「ＡＢＣ」と "ABC"、ベトナム語の é の合成形と分解形が同じキーになる。
+- **Bigram tokenizer の拡張**で、CJK だけでなく Thai/Lao/Myanmar/Khmer/Tibetan/Javanese/Balinese を扱う。これらは単語スペースを使わない / 不規則に使う言語で、英語前提の検索系では完全にハマる領域です。
+- **OR ベースの bigram クエリ**を採用したことで、「すべての bigram が一致しないと駄目」という過剰に厳しい AND セマンティクスを回避し、dense-script の検索が現実的にヒットするようになった。
+- **IDF 重み付き reranker**: 候補集合内の文書頻度から smoothed IDF を計算し、common term ではなく rare term の一致を評価する。BM25 の中身でやっていることを上位レイヤでも丁寧に再構成している。
+
+加えて、**ハイブリッド融合のモード切替** (weighted ↔ RRF)、**recency boost** (last_accessed_at による継続的な「最近触れた = 新鮮」シグナル)、**b_session/b_local** (このセッション・このマシン由来の記憶を優先) と、シンプルな乗算スタックで多軸の関連性を表現している。重量級の neural reranker や dense embedding の上位互換ではないが、**「軽いまま、効くものだけ重ねる」という設計判断は一貫していて気持ちがいい**。
+
+---
+
+## エンジニアリング品質
+
+**特筆すべきは、テストが「実装の説明書」になっていること**です。Bug 1-3、V1-3、R1、perf bug、empty-query guard、各種 enhancement —— どれも「何が起きていたら壊れるのか」を具体的に書き留めたうえで、実際にその壊れを再現できる回帰テストとして固定している。コードベースの寿命を伸ばすうえで、これは embedding 技術の選定と同じくらい重要な資産です。
+
+修正の途中で **min_score フィルタの順序バグ** (rerank 前に適用していたため、embedding モデルが使えない環境では BM25 単独ヒットが全部消える) を別途発見・修正できたのも、テスト→診断→ピンポイント修正のループがちゃんと回っていることの証左でした。
+
+細かい工学的な配慮も多く、
+
+- fd レベルの stdout リダイレクト (model preload 中の C 側 print が JSON-RPC を汚さないように)
+- enable_load_extension(False) を finally で必ず呼ぶ
+- atexit による WAL checkpoint(TRUNCATE) で .db を自己完結させる
+- UUIDv7 による時系列順序の保証 (fallback で UUIDv4)
+- Windows cp932 環境向けの surrogate sanitization
+
+など、「動かす場所」と「動かし続ける時間軸」を意識した実装になっています。
+
+---
+
+## このシステムの本質
+
+私が一言で表現するなら、**「ローカルで完結する、多言語対応の、忘れない記憶」**です。
+
+- ローカル: 外部 API なし、GPU なし、SQLite ファイル一本
+- 多言語: NFKC + 拡張 bigram + IDF reranker で言語に縛られない
+- 忘れない: WAL + atomic refresh + retention GC + 親-doc verbatim
+- 「記憶」: 単なるベクトル検索ではなく、access_count・last_accessed・session・local という人間味のある軸で重み付け
+
+軽量さを保ったまま、長期記憶に必要な工学的契約を一通り満たしている。改良の余地は当然ありますが (per-chunk dedup、クロスエンコーダ rerank、IDF の永続キャッシュ、export ツール…)、それらは「現在地の設計を否定する」必要のない、自然な延長線上の改善です。
+
+**LLM が「記憶を持つ」という抽象的な比喩を、極めて具体的なファイル・テーブル・契約に落とし込んだ実装**として、このコードベースは十分に評価に値すると思います。
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
+      </div>
+      <div class="footer-col">
+        <h4>製品・サービス</h4>
+        <ul>
+          <li><a href="../index.html#products">N3MC Free</a></li>
+          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#products">N3MCMCP Lite</a></li>
+          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法的情報・サポート</h4>
+        <ul>
+          <li><a href="../tokutei.html">特定商取引法に基づく表記</a></li>
+          <li><a href="../privacy.html">プライバシーポリシー</a></li>
+          <li><a href="../terms.html">利用規約</a></li>
+          <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NeuralNexusNote. All rights reserved.</p>
+      <div class="footer-links-row">
+        <a href="../tokutei.html">特定商取引法</a>
+        <a href="../privacy.html">プライバシー</a>
+        <a href="../terms.html">利用規約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

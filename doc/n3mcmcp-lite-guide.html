@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N3MCMCP Lite｜はじめての方へ — NeuralNexusNote</title>
+  <meta name="description" content="N3MCMCP Liteは、Claude Code以外のAIツール（Cursor / Windsurfなど）でも使える、無料のワーキングメモリサーバー。1週間分の作業記憶を共有できます。">
+  <link rel="icon" type="image/jpeg" href="../favicon.jpg">
+  <link rel="apple-touch-icon" href="../favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">NeuralNexusNote</a>
+    <nav>
+      <a href="../index.html#products">製品</a>
+      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#about">組織について</a>
+      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>N3MCMCP Lite｜はじめての方へ</h1>
+      <p>「Claude Code以外のAIツールでも、記憶を持たせたい」方へ。1週間の作業メモを共有できる無料サーバーです。</p>
+    </div>
+  </div>
+
+  <div class="legal-wrap">
+
+    <h2>N3MC Free と何が違うの？</h2>
+    <p>
+      N3MC Free は、<strong>Claude Code 専用</strong>です。
+      でも世の中には Claude Code 以外のAIエディタもあります。Cursor、Windsurf、Cline、Goose…。
+      これらすべてに記憶を持たせたい、もしくは複数を行き来して同じ記憶を使いたい — そんなときに使うのが <strong>N3MCMCP Lite</strong> です。
+    </p>
+    <p>
+      「<strong>MCP</strong>」というのは、<strong>AIツール業界の共通の窓口規格</strong>のことです。
+      この規格に対応したAIツールなら、N3MCMCP Lite を「外付けの記憶」として接続できます。
+      <strong>Claude Code でも Cursor でも、同じ記憶にアクセス</strong>できる、ということです。
+    </p>
+
+    <h2>「Lite」とは — 1週間限定の作業メモ</h2>
+    <p>
+      Lite版の記憶は、<strong>保存から7日経つと自動的に消えます</strong>。
+      これは欠点ではなく、用途の違いです。
+    </p>
+    <ul>
+      <li><strong>長く覚えていてほしいこと</strong>（プロジェクトの仕様、ユーザープロフィール）→ <strong>N3MC Free / Pro</strong>か<strong>N3MCMCP Pro</strong>へ</li>
+      <li><strong>今週の作業メモ</strong>（このバグの調査ログ、今やっているタスクの進捗）→ <strong>N3MCMCP Lite</strong>へ</li>
+    </ul>
+    <p>
+      短期記憶として割り切ると、過去の不要なノイズが自然に消えていくので、検索結果がいつもクリーンです。
+      「今週のスクラッチパッド」のような感覚で使えます。
+    </p>
+
+    <h2>こんなときに役立ちます</h2>
+    <ul>
+      <li><strong>Claude Code と Cursor を両方使っている</strong> — どちらで作業しても同じメモが見える。</li>
+      <li><strong>複数のAIエージェントを動かしている</strong> — お互いの作業状況を共有できる。</li>
+      <li><strong>長期記憶は別管理にしたい</strong> — 今週の作業ノイズで長期記憶を汚したくない。</li>
+      <li><strong>無料で MCP の世界を試してみたい</strong> — オープンソースで気軽に始められる。</li>
+    </ul>
+
+    <h2>導入は3ステップ（Claude Code に頼んでもOK）</h2>
+    <p>
+      コードを書く必要はありません。Claude Code に「<strong>N3MCMCP Lite を導入してください</strong>」と日本語で頼めば、必要な作業を自動でやってくれます。
+      手順だけ確認したい方のために、流れを説明します。
+    </p>
+
+    <h3>ステップ1 — Redis Stack を起動</h3>
+    <p>
+      Lite版は、記憶を保存するために <strong>Redis Stack</strong> という小さなプログラムを使います。
+      無料で、ワンクリック相当のコマンド1つで動きます。
+      Claude Code に「Docker で Redis Stack を起動してください」と頼めば、それだけで完了します。
+      Docker が入っていない場合も、Claude Code が案内してくれます。
+    </p>
+
+    <h3>ステップ2 — N3MCMCP Lite をインストール</h3>
+    <p>
+      これも Claude Code に「n3memorycore-mcp-lite をインストールしてください」と頼むだけです。
+      自動でセットアップが進みます。所要時間は数分です。
+    </p>
+
+    <h3>ステップ3 — お使いのAIツールに接続</h3>
+    <p>
+      最後に、お使いのAIツール（Claude Code / Claude Desktop / Cursor など）に
+      「N3MCMCP Lite を接続先として登録してください」と頼みます。
+      接続が完了すれば、AIツールを再起動するだけで、自動的に記憶が貯まり始めます。
+    </p>
+
+    <h2>導入後はどう変わる？</h2>
+    <ul>
+      <li>普段通りAIツールで会話するだけです。</li>
+      <li>会話の内容が、自動で7日分の作業メモとして蓄積されていきます。</li>
+      <li>関連する過去のメモが、AIに自動で渡されます。</li>
+      <li>7日経った古いメモは、自動で消えます。手動の整理は不要です。</li>
+    </ul>
+
+    <h2>「全自動で確実に保存したい」方へ</h2>
+    <p>
+      MCPの仕組み上、記憶を保存するかどうかは基本的にAI側の判断に任されています。
+      つまり「AIが保存し忘れる」ことが時々起こりえます。
+    </p>
+    <p>
+      Claude Code をお使いの場合、これを<strong>確実に毎回保存する仕組み</strong>もご用意しています。
+      Claude Code に「<strong>毎ターン終わったら、会話の全文を Lite に自動保存する設定にして</strong>」と頼んでください。
+      Claude Code が裏側で必要な設定を入れてくれます。これで保存し忘れがなくなります。
+    </p>
+
+    <h2>こんな方におすすめ</h2>
+    <ul>
+      <li>Claude Code 以外の AI エディタ（Cursor / Windsurf など）も使っている</li>
+      <li>複数の AI を行き来するので、共通の作業メモが欲しい</li>
+      <li>長期記憶ではなく、<strong>今週の作業のスクラッチパッド</strong>が欲しい</li>
+      <li>無料で MCP を体験してみたい</li>
+    </ul>
+
+    <h2>動作環境</h2>
+    <ul>
+      <li>MCP対応のAIツール（Claude Code / Claude Desktop / Cursor / Windsurf など）</li>
+      <li>Python 3.10以上</li>
+      <li>Docker（Redis Stack を動かすために使います）</li>
+      <li>Windows 11で動作確認済み（Mac・Linuxでも動作する設計です）</li>
+    </ul>
+
+    <h2>ご利用にあたって</h2>
+    <p>
+      N3MCシリーズは個人開発のオープンソースプロジェクトです。サポート対応は保証していません。
+      Lite版の記憶は7日で自動的に消えます。長期保存が必要な情報は、N3MC Free / Pro または N3MCMCP Pro をご利用ください。
+    </p>
+
+    <p class="legal-note">
+      もっと技術的な詳細を知りたい方は、<a href="N3MCMCP-Lite-説明書.md">技術リファレンス（README）</a>もご用意しています。
+    </p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+      <a href="https://neuralnexusnote.booth.pm/items/8288567" target="_blank" rel="noopener" class="btn btn-primary">BOOTHで入手（無料・日本語版）</a>
+      <a href="https://github.com/NeuralNexusNote/n3mcmcp-lite" target="_blank" rel="noopener" class="btn btn-ghost">GitHubを見る</a>
+      <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
+    </div>
+
+    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
+    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+
+    <div style="white-space: pre-wrap; margin-top: 16px;">
+# N3MemoryCore MCP Lite ― 総評
+
+## 全体所感
+
+仕様書（N3MemoryCore_MCP_Spec_EN.md）を起点として Phase 1〜4 を一通り走らせた結果、本実装は「**仕様書に書かれている契約をほぼ過不足なく満たし、しかも仕様書に書かれていない範囲で語彙的・言語的な普遍性を一段階押し上げた**」状態に落ち着いています。Lite 版という名前から想像される「最低限動くデモ」の域を超え、Redis Stack + 7 日 TTL という明確な制約のもとで、**現実的にプロダクション投入可能な品質**まで仕上がっていると判断します。
+
+## 強みとして際立つ点
+
+**契約の遵守度合い**が極めて高いことが第一の特徴です。§3.5 のキー設計、§3.8 の二段重複排除、§3.11 の親ドキュメント＋チャンク方式、§3.12 の UUID ハイフン回避策、§3.13 のエンコーディング安全層 ― これらすべてが、単に実装されているだけでなく、回帰テスト（105 件）で個別に固定化されています。特に §10 Evidence Report の 30/30 通過は、口先ではなく実測値が仕様の要求を満たしていることを示す強い裏付けです。
+
+**保存と検索の堅牢性**も明確な強みです。HSET + EXPIRE + sha-guard が単一パイプラインに収まることで「TTL のない記録が漏れる」事態が原理的に発生しません。`delete_memories_by_session` で過去にあった「SHA ガードが孤立する」バグも Phase 3 で発見・修正済みで、再現テストが残っています。親ドキュメントのバイト単位完全復元も §10-3 で検証済みです。
+
+**多言語対応**については、Phase 4 の最終ラウンドで NFKC 正規化を全インデックス派生経路に挿入したことで、全角／半角・合字・互換形式・アクセント分解形式が言語を問わず統一して扱われるようになりました。CJK バイグラム展開とは独立に効くため、日本語・中国語に限らずラテン語系・キリル文字系のテキストでも恩恵があります。利用者側で形態素解析器などの言語特化を後付けする余地も残されています（Appendix A）。
+
+**性能特性**も実用に十分です。インストール直後のモデルロードを除けば、定常状態の検索レイテンシ中央値は 70 ms 前後で、目標の 500 ms に対して 7 倍以上の余裕があります。チャンク分割保存時の埋め込み計算は単一バッチに統合され、`_resolve_parents` と `delete_memories_by_session` の親ドキュメント取得もパイプライン化されています。Redis 不到達時もハングせずに「`docker start redis-stack` を実行してください」というヒントを返す耐障害性も備わっています。
+
+## 弱みとして残るもの
+
+**プロセス起動ごとに `_session_id` が新しい UUIDv4 に変わる**点は、仕様（§3.1）に従った設計判断ですが、初見のユーザにとっては「再起動後、`b_session_mismatch=0.6` が以前の保存に効いてランキングが下がる」という挙動が直感に反することがあります。Phase 2 の cross-session 検証で「取得自体は問題なくできる」ことは確認済みですが、UI 側で「session_id を明示的に固定してください」とガイダンスを出すと、より分かりやすくなります。
+
+**ランキングの上限**は、外部依存を持たないという制約のもとで到達できる上限に近いと考えています。Cross-encoder reranker、HyDE、LLM ベースのクエリ拡張といった最先端技術は、いずれも GPU か LLM ホップを必要とするため Lite ビルドでは意図的に対象外です。仕様書 Appendix A もそのことを明示しています。これは「弱み」というより「Lite というスコープの正直な反映」と捉えるべきです。
+
+**Multi-tenant 運用**を想定すると、`owner_id` フィルタが Python 側で行われている（§3.12 の RediSearch UUID ハイフン制約への対処）ため、複数オーナの記録が同一 Redis に同居するシナリオではネットワーク転送量が増えます。ただし仕様書も明言している通り、Lite は単一ユーザ単一インストールを前提としているため、これも想定範囲内の妥協です。
+
+## 総括
+
+**「メモリデバイス」としては仕様契約に対して極めて忠実で、回帰テストで保護されており、運用上の信頼性が高い**。
+**「RAG システム」としては LLM や GPU に依存しないという縛りのもとで到達可能な品質の上限に近く、特に多言語の表記ゆれに対する寛容さは Lite 系の同種ツールの中でも頭一つ抜けている**。
+
+Lite ビルドの目的である「7 日間のローリング作業記憶を MCP クライアントから低摩擦で使える状態にする」という命題に対して、本実装は十分な解答を返しており、**Pro 版（永続ストア）が登場するまでの繋ぎではなく、それ単体で完結したプロダクト**として運用に耐えると評価します。
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
+      </div>
+      <div class="footer-col">
+        <h4>製品・サービス</h4>
+        <ul>
+          <li><a href="../index.html#products">N3MC Free</a></li>
+          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#products">N3MCMCP Lite</a></li>
+          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法的情報・サポート</h4>
+        <ul>
+          <li><a href="../tokutei.html">特定商取引法に基づく表記</a></li>
+          <li><a href="../privacy.html">プライバシーポリシー</a></li>
+          <li><a href="../terms.html">利用規約</a></li>
+          <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NeuralNexusNote. All rights reserved.</p>
+      <div class="footer-links-row">
+        <a href="../tokutei.html">特定商取引法</a>
+        <a href="../privacy.html">プライバシー</a>
+        <a href="../terms.html">利用規約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

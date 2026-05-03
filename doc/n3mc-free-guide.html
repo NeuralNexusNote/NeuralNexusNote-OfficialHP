@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N3MC Free｜はじめての方へ — NeuralNexusNote</title>
+  <meta name="description" content="N3MC Freeは、Claude Codeに「昨日の続きから話せる記憶」を無料で追加するツールです。コードを書かなくても導入できます。">
+  <link rel="icon" type="image/jpeg" href="../favicon.jpg">
+  <link rel="apple-touch-icon" href="../favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">NeuralNexusNote</a>
+    <nav>
+      <a href="../index.html#products">製品</a>
+      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#about">組織について</a>
+      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>N3MC Free｜はじめての方へ</h1>
+      <p>「Claude Codeは使っているけど、コードは読まない」方へ。無料で始められる、AIに記憶を持たせる仕組みのご紹介です。</p>
+    </div>
+  </div>
+
+  <div class="legal-wrap">
+
+    <h2>こんな経験、ありませんか？</h2>
+    <p>
+      Claude Codeに「先週のあの話、覚えてる？」と聞いても、まっさらな顔で返ってくる。
+      毎回、同じ前提を最初から説明し直す。これは、AIが<strong>セッション（会話）が終わると記憶をリセットする仕様</strong>だからです。
+    </p>
+    <p>
+      <strong>N3MC Free</strong>は、この「忘れる問題」を、無料で、あなたのPCの中だけで解決します。
+    </p>
+
+    <h2>N3MC Freeで何ができるの？</h2>
+    <ul>
+      <li><strong>昨日の続きから話せる</strong> — 翌日Claude Codeを開いても、先週議論した内容を踏まえて答えてくれます。</li>
+      <li><strong>言葉が違っても思い出してくれる</strong> — 「あの時のログイン処理の話」と聞けば、「認証エラーの調査」と保存されていた話を引き出してくれます（意味で検索）。</li>
+      <li><strong>同じ説明を繰り返さなくていい</strong> — プロジェクトの背景や、好みの書き方を一度伝えれば、毎回思い出してくれます。</li>
+      <li><strong>勝手に動いてくれる</strong> — あなたが何か操作する必要はありません。会話するだけで、裏で自動的に保存・検索が走ります。</li>
+    </ul>
+
+    <h2>N3MC Freeの安心ポイント</h2>
+    <ul>
+      <li><strong>完全無料・オープンソース</strong> — GitHubで公開されており、隠し課金や広告はありません。</li>
+      <li><strong>会話はあなたのPCの中だけに保存</strong> — クラウドに送信されません。情報漏えいの心配なし。</li>
+      <li><strong>日本語が得意</strong> — 日本語・英語・中国語など約100言語に対応した検索エンジンを最初から内蔵。</li>
+      <li><strong>軽い</strong> — あなたのClaude Codeの動作を遅くしません。</li>
+    </ul>
+
+    <h2>導入は、Claude Codeに「お願い」するだけ</h2>
+    <p>
+      N3MC Freeは、<strong>あなたが手動でコードを書く必要はありません</strong>。
+      使い方は2通り。どちらも難しい作業はClaude Codeが代わりにやってくれます。
+    </p>
+
+    <h3>方法A — Claude Codeに丸投げする（一番ラク）</h3>
+    <ol>
+      <li>BOOTHまたはGitHubから「指示書（説明書ファイル）」を1つダウンロードします。</li>
+      <li>Claude Codeのチャット欄に、そのファイルをドラッグ＆ドロップします。</li>
+      <li>「指示書通りに実装してください」と日本語で頼みます。</li>
+    </ol>
+    <p>
+      これだけ。あとはClaude Codeが、必要な準備を15〜30分ほどかけて勝手に進めてくれます。
+      終わったら、いつも通りClaude Codeを使い始めるだけで、自動的に記憶が貯まり始めます。
+    </p>
+
+    <h3>方法B — もっと素早く始めたい方向け</h3>
+    <p>
+      「準備が完成しているもの」をそのままインストールする方法もあります。
+      Claude Codeに「<strong>n3memorycore-free をインストールして、<code>n3mc --init</code> を実行してください</strong>」と頼めば、これも自動で進みます。
+      所要時間は数分です。
+    </p>
+
+    <h2>導入後はどう変わる？</h2>
+    <ul>
+      <li>Claude Codeとの会話が、自動的に記録されていきます。</li>
+      <li>あなたが何か質問すると、関連する過去のやりとりがClaude Codeに自動で渡されます。</li>
+      <li>Claude Codeが「以前話した○○の件ですが…」と、文脈を踏まえて答えてくれるようになります。</li>
+      <li>あなたは、これまで通り普通に使うだけです。設定をいじったり、保存ボタンを押したりする必要はありません。</li>
+    </ul>
+
+    <h2>無料版の範囲について</h2>
+    <p>
+      Free版は、「保存する・思い出す・自動で動く」という<strong>記憶の基本機能をすべて無料</strong>でお使いいただけます。
+      より高度な機能（古くなった記憶の自動整理、書き直したときの自動更新、データの引っ越し機能など）は、有料の<strong>N3MC Pro</strong>版でご提供しています。
+    </p>
+    <p>
+      まずはFree版で「AIが記憶を持つ」体験を味わってみて、必要を感じたらPro版へアップグレードしてください。
+      アップグレードはClaude Codeに頼めば、これも自動でやってくれます。
+    </p>
+
+    <h2>動作環境</h2>
+    <ul>
+      <li>Claude Code（必須）</li>
+      <li>Python 3.10以上（入っていない場合、Claude Codeが導入を案内してくれます）</li>
+      <li>Windows 11で動作確認済み（Mac・Linuxでも動作する設計です）</li>
+    </ul>
+
+    <h2>ご利用にあたって</h2>
+    <p>
+      N3MCシリーズは個人開発のオープンソースプロジェクトです。サポート対応は保証していません。
+      AIが生成したコードで動作するため、大切なプロジェクトで使う前は、現在の環境のバックアップをおすすめします。
+    </p>
+
+    <p class="legal-note">
+      もっと技術的な詳細を知りたい方は、<a href="N3MC-Free-説明書.md">技術リファレンス（README）</a>もご用意しています。
+    </p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+      <a href="https://neuralnexusnote.booth.pm/items/8196713" target="_blank" rel="noopener" class="btn btn-primary">BOOTHで入手（無料・日本語版）</a>
+      <a href="https://github.com/NeuralNexusNote/n3mc-free" target="_blank" rel="noopener" class="btn btn-ghost">GitHubを見る</a>
+      <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
+    </div>
+
+    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
+    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+
+    <div style="white-space: pre-wrap; margin-top: 16px;">
+# N3MC-Free 総評
+
+**いま到達している地点**
+
+フックは UserPromptSubmit／Stop ともに無声運用、Active RAG はフルパス指定で安定稼働している。前回（4/29）のレビュー時点で気になっていた「指示書と実運用の不整合」「ランキング層の細かなノイズ」は処理段（[processor.py](n3mc-free/n3memorycore/core/processor.py)）と行動指針（[n3mc-behavior.md](.claude/rules/n3mc-behavior.md)）の双方で改修が入り、**設計の角は取れた**印象。
+
+**全体としてどう見えるか**
+
+> **「思想が先にあって、実装がそれに追いついた」プロダクト**
+
+これが一番正直な評価です。`audit.log` を最初に書いてから後段を走らせる「最後の砦」設計、`--buffer` を AI に触らせず全自動保存に倒した分業、フックでの沈黙運用 — どれも「会話の取りこぼしを構造的に潰す」という一貫した思想から逆算されていて、機能の足し算で作られた RAG ライブラリとは骨格が違う。
+
+**強みの本質**
+
+- **記憶装置としての堅牢性**: SQLite + FTS5 + ベクトルの三層構成は Free 版の枠を超えている。停電・クラッシュに対する耐性も `audit.log` 先行書き込みで担保されており、データ消失耐性は商用品並み。
+- **AI への認知負荷ゼロ設計**: 「保存判断は AI にさせない」と割り切ったことで、Claude 側のプロンプトが汚れない。これは長期運用で効いてくる地味だが本質的な美点。
+- **想起の自然さ**: 今回のセッションでも「3 日前の総評（score 0.66）」を上位で引けており、関連性ランキングは実用域。
+
+**まだ磨ける部分**
+
+- **出力サイズのガバナンス**: 想起結果の流量制御がフック層に欠けていて、毎回プレビュー切り詰めが起きる。これは思想の問題ではなく、実装の最後の一仕上げ。
+- **環境統合の薄さ**: PATH が通っていないので指示書がフルパスで逃げている。インストーラ側で OS 統合まで踏み込むかどうかは設計判断の分かれ目。
+- **想起の使い分け指針**: いまは AI が「使ったら明示」というルールだけで、**使うべきか／使わないべきか**の判断は AI 任せ。低スコア帯の扱いを行動指針側で言語化すると体感品質がもう一段上がる。
+
+**ひとことで**
+
+> *記憶装置としては既に「完成品」、RAG としては「実用は十分、洗練の余地あり」。Free 版という肩書きを忘れてもよいレベルの完成度に達している。*
+
+次の一手として地味で効くのは、**フック出力に top_k ／要約段の上限を入れる**こと。ここを締めるだけで、運用上の唯一の引っかかりが消えます。
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
+      </div>
+      <div class="footer-col">
+        <h4>製品・サービス</h4>
+        <ul>
+          <li><a href="../index.html#products">N3MC Free</a></li>
+          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#products">N3MCMCP Lite</a></li>
+          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法的情報・サポート</h4>
+        <ul>
+          <li><a href="../tokutei.html">特定商取引法に基づく表記</a></li>
+          <li><a href="../privacy.html">プライバシーポリシー</a></li>
+          <li><a href="../terms.html">利用規約</a></li>
+          <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NeuralNexusNote. All rights reserved.</p>
+      <div class="footer-links-row">
+        <a href="../tokutei.html">特定商取引法</a>
+        <a href="../privacy.html">プライバシー</a>
+        <a href="../terms.html">利用規約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
