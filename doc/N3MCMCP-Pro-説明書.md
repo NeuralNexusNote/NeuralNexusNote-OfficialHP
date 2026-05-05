@@ -160,7 +160,7 @@ Lite と異なります：
 
 - **Claude Code**（または他の MCP 対応クライアント）
 - **Python 3.10+**
-- **OS**: Windows 11（動作確認済み） / macOS・Linux（対応設計だが未検証）
+- **OS**: Windows 11・Ubuntu（動作確認済み） / macOS（対応設計だが未検証）
 
 > Python が入っているか確認するには、ターミナルで `python --version` を実行
 > してください。未インストールの場合、セットアップ時に Claude Code が案内します。
