@@ -26,6 +26,11 @@
 </header>
 
 <main>
+  <!-- sales-suspension notice -->
+  <div style="background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 20px;text-align:center;font-weight:600;">
+    ⚠️ N3MC Pro は現在販売を一時停止しております。再開までしばらくお待ちください。
+  </div>
+
   <div class="container">
     <div class="page-header">
       <h1>N3MC Pro｜はじめての方へ</h1>
@@ -118,11 +123,14 @@
       <li>Claude Codeが「最近のあなた」をより正確に思い出してくれるようになります。</li>
     </ul>
 
+    <!-- price section hidden: sales suspended -->
+    <div style="display:none">
     <h2>価格について</h2>
     <p>
       <strong>先着200名様限定 ¥600 / $7</strong>（通常価格 ¥1,000 / $15）でご提供しています。
       売り切れ次第、通常価格へ切り替わりますのでお早めにご検討ください。
     </p>
+    </div>
 
     <h2>動作環境</h2>
     <ul>
@@ -141,11 +149,12 @@
       もっと技術的な詳細を知りたい方は、<a href="N3MC-Pro-説明書.md">技術リファレンス（README）</a>もご用意しています。
     </p>
 
+    <!-- purchase buttons hidden: sales suspended -->
     <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
-      <a href="https://neuralnexusnote.booth.pm/items/8356547" target="_blank" rel="noopener"
-        class="btn btn-primary">BOOTHで購入（日本語版）</a>
-      <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/da520bd7-3393-4a74-9a11-b76675180656" target="_blank" rel="noopener"
-        class="btn btn-primary">Get on LemonSqueezy（English）</a>
+      <span style="display:none"><a href="https://neuralnexusnote.booth.pm/items/8356547" target="_blank" rel="noopener"
+        class="btn btn-primary">BOOTHで購入（日本語版）</a></span>
+      <span style="display:none"><a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/da520bd7-3393-4a74-9a11-b76675180656" target="_blank" rel="noopener"
+        class="btn btn-primary">Get on LemonSqueezy（English）</a></span>
       <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
       <a href="n3mc-free-guide.html" class="btn btn-ghost">まずはFree版を見る</a>
     </div>
