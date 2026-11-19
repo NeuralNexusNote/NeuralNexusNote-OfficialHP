@@ -1,706 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>N3MemoryCore — Claude Code に「全部覚えてる」長期記憶を | NeuralNexusNote</title>
-  <meta name="description" content="Claude Code の会話を選別せず全文保存。auto-memory・mem0 と違い、半年前の会話も文脈ごと取り出せる長期記憶ツール N3MemoryCore。小説家・研究者・長期プロジェクト向け。">
-  <meta property="og:title" content="N3MemoryCore — Claude Code に「全部覚えてる」長期記憶を">
-  <meta property="og:description" content="会話を選別せず全文保存。auto-memory が忘れた断片も、mem0 が要約して捨てた一言も、ぜんぶ残します。">
-  <meta property="og:url" content="https://neuralnexusnote.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://neuralnexusnote.com/images/n3mc-hero.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="N3MemoryCore — Claude Code に「全部覚えてる」長期記憶を">
-  <meta name="twitter:description" content="会話を選別せず全文保存。半年前の会話も文脈ごと取り出せる長期記憶ツール。">
-  <meta name="twitter:image" content="https://neuralnexusnote.com/images/n3mc-hero.webp">
-  <meta name="theme-color" content="#0B0F14">
-  <link rel="icon" type="image/jpeg" href="favicon.jpg">
-  <link rel="apple-touch-icon" href="favicon.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N3MemoryCore｜開発エージェントの長期記憶</title>
+<meta name="description" content="Claude Code・Codex 向けのローカル記憶ツール N3MemoryCore。開発環境に合う製品と導入ガイドを紹介します。">
+<meta property="og:title" content="N3MemoryCore — Memory for coding agents">
+<meta property="og:image" content="https://neuralnexusnote.com/images/n3mc-hero.webp">
+<link rel="icon" href="favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&amp;family=Noto+Sans+JP:wght@400;500;600;650;700&amp;display=swap">
+<style>
+:root{--ink:#2a2a2a;--paper:#f8f9fa;--mint:#00d1b2;--green:#007462;--rule:#ccd6d3;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.75 Inter,"Noto Sans JP",sans-serif}
+html[lang="ja"] [lang="en"],html[lang="en"] [lang="ja"]{display:none!important}
+a{color:inherit;text-underline-offset:.25em} button{font:inherit;color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.wrap{width:min(1176px,calc(100% - 88px));margin:auto}
+header{border-bottom:1px solid var(--rule)}.bar,.brand,nav,.languages,.acts,.edition-top,.footer-links{display:flex;align-items:center}
+.bar{min-height:76px;gap:28px}.brand{gap:10px;font-weight:700;letter-spacing:-.04em;text-decoration:none;font-size:1.22rem}.brand img{border-radius:5px}
+nav{gap:24px;margin-left:auto}nav a{text-decoration:none;font-size:.9rem}nav a:hover{color:var(--green)}
+.languages{border:1px solid var(--rule);padding:3px;border-radius:22px}.languages button{border:0;background:transparent;border-radius:18px;padding:5px 10px;font-size:.8rem;font-weight:600}.languages button[aria-pressed=true]{background:var(--ink);color:white}
+.hero{display:grid;grid-template-columns:1.08fr 1fr;gap:5%;align-items:center;padding-block:clamp(48px,6vw,88px)}
+.kicker,small,.plate-head,.plate-foot{font-size:.78rem;font-weight:650;letter-spacing:.1em}.kicker{display:flex;align-items:center;gap:10px;color:var(--green);margin:0 0 19px}.kicker:before{content:"";background:var(--mint);height:3px;width:26px}
+h1,h2,h3,p,figure{margin:0}h1{font-size:clamp(2.4rem,4.75vw,4.65rem);line-height:1.23;letter-spacing:-.065em;font-weight:650}html[lang=en] h1{font-size:clamp(3rem,5.45vw,5rem);line-height:1.02}h1 em{font-style:normal;color:var(--green)}
+.lead{max-width:50ch;margin-top:24px;color:#4e5b57}.acts{gap:12px;flex-wrap:wrap;margin-top:30px}.action{display:inline-flex;align-items:center;justify-content:center;padding:11px 20px;border-radius:7px;font-weight:650;text-decoration:none;font-size:.93rem;border:1px solid var(--ink);background:var(--ink);color:white}
+.action,.languages button{transition:transform .3s ease,box-shadow .3s ease}.secondary{background:transparent;border-color:#acbcb7;color:var(--ink)}
+@media(hover:hover){.action:hover,.languages button:hover{transform:translateY(-3px);box-shadow:0 5px 14px #19383018}}
+.plate{overflow:hidden;position:relative;isolation:isolate;display:grid;place-items:center;aspect-ratio:1.29;border-radius:16px;background-color:#112c29;background-image:radial-gradient(ellipse at 53% 49%,#25746578,transparent 63%),linear-gradient(#a3eacf0b 1px,transparent 1px),linear-gradient(90deg,#a3eacf0b 1px,transparent 1px);background-size:auto,22px 22px,22px 22px;color:#d5f5e9}
+.plate-head,.plate-foot{position:absolute;left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;font-size:.76rem}.plate-head{top:6%}.plate-foot{bottom:6%;border-top:1px solid #a4cebc44;padding-top:8px}.plate-foot span+span{letter-spacing:0;font-weight:450}
+.stack{width:53%;aspect-ratio:1;position:relative;transform:translateY(-10%)}.layer{position:absolute;inset:0;transform:scaleY(.54) rotate(45deg);border:2px solid #84edd0;border-radius:10%;background:repeating-linear-gradient(0deg,transparent 0 14px,#64e9bd24 14px 15px),repeating-linear-gradient(90deg,#1a5d52 0 14px,#3d947d 14px 15px);box-shadow:5px 5px 0 #215349,8px 8px 0 #539782,15px 15px 22px #04251f80}.layer:nth-child(1){top:30%;bottom:-30%;opacity:.65}.layer:nth-child(2){top:15%;bottom:-15%;opacity:.87}.layer:last-child{background:repeating-linear-gradient(90deg,transparent 0 9px,#bcffe329 9px 10px),linear-gradient(140deg,#aaf6d9,#55c7a9 56%,#17806d);border:3px solid #beffe4;display:grid;place-items:center}.chip{width:60%;height:60%;border:1px solid #164a4059;border-radius:9%;background:#8de3c5;display:grid;place-items:center;color:#123e35;font-size:clamp(1.5rem,3.5vw,3.9rem);font-weight:700;letter-spacing:-.09em}
+section.block{padding-block:62px;border-top:1px solid var(--rule)}h2{font-size:clamp(1.85rem,3.4vw,3rem);line-height:1.3;letter-spacing:-.055em}.editions,.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:29px}.edition{display:flex;flex-direction:column;padding:24px;background:white;border:1px solid var(--rule);border-top:3px solid var(--green);border-radius:4px 4px 12px 12px}.edition-top{justify-content:space-between;color:var(--green)}.edition-top b{font-size:.8rem;background:#daf6ed;padding:2px 10px;border-radius:14px}.edition h3{font-size:1.45rem;letter-spacing:-.055em;margin:22px 0 8px}.edition p,.steps p,.pro p{color:#4f5e59}.edition-links{display:grid;justify-items:start;gap:9px;padding-top:22px;margin-top:auto;font-size:.88rem}.edition-links .action{margin-bottom:4px}.pro{margin-top:20px;padding:22px;background:#e7f1ed;border-radius:8px}.pro summary{cursor:pointer;font-weight:650}.pro p{margin-top:12px}
+.steps article{border-left:2px solid var(--mint);padding-left:17px}.steps h3{margin-bottom:6px}.demo{display:grid;grid-template-columns:.8fr 1fr;gap:5%;align-items:center}.demo p{margin-top:18px}.demo img{display:block;width:100%;border-radius:10px}.demo a{display:block}
+footer{background:#142925;color:#e3f1eb;padding:44px 0}.footer-links{gap:12px 25px;flex-wrap:wrap;font-size:.88rem;margin-top:20px}
+.enter{animation:enter .55s ease-out both}@keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(max-width:800px){.wrap{width:calc(100% - 40px)}.hero{grid-template-columns:1fr;gap:30px}.plate{aspect-ratio:1.65}.stack{width:42%}.editions{grid-template-columns:1fr}.edition h3{margin-top:14px}.demo{grid-template-columns:1fr;gap:20px}.steps{grid-template-columns:1fr}.bar{flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:12px}nav{order:3;flex-basis:100%;margin:0;gap:18px}.acts{margin-top:22px}.block .kicker{margin-bottom:12px}section.block{padding-block:38px}}
+</style>
 </head>
-
 <body>
-
-  <!-- Icon sprite (line icons, 24px grid) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-github" viewBox="0 0 16 16">
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-    </symbol>
-    <symbol id="i-bag" viewBox="0 0 24 24">
-      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
-    </symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-    </symbol>
-    <symbol id="i-download" viewBox="0 0 24 24">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>
-    </symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24">
-      <path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/>
-    </symbol>
-    <symbol id="i-close" viewBox="0 0 24 24">
-      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
-    </symbol>
-    <symbol id="i-expand" viewBox="0 0 24 24">
-      <path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/>
-    </symbol>
-  </svg>
-
-  <a href="#main" class="skip-link">本文へ移動</a>
-
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
-      <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
-        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <nav id="site-nav">
-        <a href="#how">仕組み</a>
-        <a href="#products">製品</a>
-        <a href="#compare">比較</a>
-        <a href="#howto">入手方法</a>
-        <a href="#about">組織について</a>
-        <a href="contact.html">お問い合わせ</a>
-        <a href="#products" class="nav-cta">無料で始める</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <!-- launch-badge hidden: sales suspended -->
-            <div class="hero-badge" style="display:none">ローンチ特価実施中 ― 先着200名様限定</div>
-            <span class="eyebrow">Long-term memory for Claude Code</span>
-            <h1><span>Claude Code が、</span><span>半年前の会話まで</span><span>覚えている。</span></h1>
-            <p class="hero-sub">
-              N3MemoryCore は、Claude Code の会話を <strong>選別せず全文保存</strong>。
-              <span class="nw">auto-memory</span> が忘れた断片も、mem0 が要約して捨てた一言も、ぜんぶ残します。
-              <strong>小説家・研究者・長期プロジェクト</strong>のための長期記憶ツールです。
-            </p>
-            <div class="btn-row">
-              <a href="#products" class="btn btn-primary">無料で使い始める</a>
-              <a href="#how" class="btn btn-outline">仕組みを見る</a>
-            </div>
-          </div>
-
-          <figure class="hero-visual">
-            <button type="button" class="zoom" data-zoom="images/hero-recall-jp.webp"
-              data-alt="Claude Code の画面。質問に対して「前回の回答がメモリに保存されています」と答え、以前の回答の内容を表で示している"
-              data-caption="Claude Code の画面（日本語デモ）">
-              <div class="frame">
-                <div class="frame-bar"><i></i><i></i><i></i><span>Claude Code</span></div>
-                <img src="images/hero-recall-jp.webp" width="966" height="576"
-                  alt="Claude Code の画面。質問に対して「前回の回答がメモリに保存されています」と答え、以前の回答の内容を表で示している">
-              </div>
-            </button>
-            <figcaption>Claude Code の画面（日本語デモ）。「前回の回答がメモリに保存されています」と、記憶をもとに答えています。</figcaption>
-          </figure>
-        </div>
-
-        <dl class="hero-facts">
-          <div>
-            <dt>Full history</dt>
-            <dd>会話を全文保存<span>選別も要約もしません</span></dd>
-          </div>
-          <div>
-            <dt>Local</dt>
-            <dd>ローカル動作<span>記憶は自分の PC に保存</span></dd>
-          </div>
-          <div>
-            <dt>No extra cost</dt>
-            <dd>追加の LLM コストなし<span>記憶のための API 課金は不要</span></dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <!-- ===== PROBLEM ===== -->
-    <section id="problem">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">Problem</span>
-          <h2 class="sec-title">AI との会話は、続けるほど失われていく。</h2>
-          <p class="sec-desc">Claude Code に「先週のあの話、覚えてる？」と聞いても、まっさらな答えが返ってくる。長く使うほど、この問題は大きくなります。</p>
-        </div>
-
-        <div class="problem-grid">
-          <div class="problem-item">
-            <span class="num">01</span>
-            <h3>毎回、最初から説明し直す</h3>
-            <p>プロジェクトの背景も、好みの書き方も、会話が変わるたびに伝え直し。同じ前提を何度も説明することになります。</p>
-          </div>
-          <div class="problem-item">
-            <span class="num">02</span>
-            <h3>選別と要約で、細部が消える</h3>
-            <p>記憶ツールの多くは、会話を選別したり要約したりして残します。残らなかった断片や一言は、あとから取り出せません。</p>
-          </div>
-          <div class="problem-item">
-            <span class="num">03</span>
-            <h3>長い仕事ほど、文脈が途切れる</h3>
-            <p>長編小説、研究、数か月にわたるプロジェクト。必要になるのは、ずっと前に決めた設定や判断です。</p>
-          </div>
-        </div>
-
-        <div class="statement">
-          <span class="eyebrow">Solution</span>
-          <p>N3MemoryCore は、会話を選別せず全文保存します。半年前の会話も、文脈ごと取り出せます。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== HOW IT WORKS ===== -->
-    <section id="how">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">How it works</span>
-          <h2 class="sec-title">会話するだけで、記憶が貯まる。</h2>
-          <p class="sec-desc">保存も検索も、裏で自動的に動きます。設定をいじったり、保存ボタンを押したりする必要はありません。</p>
-        </div>
-
-        <div class="how-wrap">
-          <ol class="steps">
-            <li>
-              <h3>保存<small>Capture</small></h3>
-              <p>Claude Code との会話が、自動的に記録されていきます。</p>
-            </li>
-            <li>
-              <h3>蓄積<small>Store</small></h3>
-              <p>記録は自分の PC の中に保存されます。クラウドのサービスには置きません。</p>
-            </li>
-            <li>
-              <h3>検索<small>Retrieve</small></h3>
-              <p>質問すると、関連する過去のやりとりを探します。言葉が違っても、意味で見つけます。</p>
-            </li>
-            <li>
-              <h3>想起<small>Recall</small></h3>
-              <p>見つかった記憶が Claude Code に自動で渡り、文脈を踏まえた答えが返ってきます。</p>
-            </li>
-          </ol>
-
-          <figure>
-            <button type="button" class="zoom" data-zoom="images/n3mc-overview.webp"
-              data-alt="N3MemoryCore - High-Density Memory Engine" data-caption="N3MemoryCore の全体図">
-              <div class="frame">
-                <div class="frame-bar"><i></i><i></i><i></i><span>N3MemoryCore — Overview</span></div>
-                <img src="images/n3mc-overview.webp" alt="N3MemoryCore - High-Density Memory Engine" width="1600" height="893" loading="lazy">
-              </div>
-            </button>
-            <figcaption class="figcap">N3MemoryCore の全体図（英語）。クリックで拡大します。</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== DEMO GALLERY ===== -->
-    <section id="demo">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">Use Case</span>
-          <h2 class="sec-title">記憶が、創作を続ける</h2>
-          <p class="sec-desc">
-            架空都市「Vastfall」の世界観を作ったセッションの後、別のセッションで同じ設定を尋ねると —
-            何ヶ月前の記憶でも、細部まで一字一句そのままで戻ってきます。
-            <!-- 後日動画に差し替え予定 -->
-            <small>※ すべて英語デモセッションの実際の出力です。</small>
-          </p>
-        </div>
-
-        <figure class="demo-main">
-          <button type="button" class="zoom" data-zoom="images/Demo_EN_Ver2_Tereminal.png"
-            data-alt="N3MemoryCore demo — Claude Code CLI terminal recall"
-            data-caption="Claude Code CLI でも同じ記憶を想起。Web・CLI どちらの環境でも記憶は共有される">
-            <div class="frame">
-              <div class="frame-bar"><i></i><i></i><i></i><span>Claude Code — Vastfall</span></div>
-              <div class="frame-body">
-                <img src="images/Demo_EN_Ver2_Tereminal.png" width="1840" height="1314" loading="lazy"
-                  alt="N3MemoryCore demo — Claude Code CLI terminal recall">
-              </div>
-            </div>
-          </button>
-          <figcaption>Claude Code CLI でも同じ記憶を想起。Web・CLI どちらの環境でも記憶は共有される
-            <span class="zoom-hint">画像をクリックすると、全体を表示します</span></figcaption>
-        </figure>
-
-        <div class="demo-thumbs">
-
-          <figure class="demo-thumb">
-            <button type="button" class="zoom" data-zoom="images/Demo_EN_Ver2_whatLogicofVastfall.png"
-              data-alt="N3MemoryCore demo — What is the logic of Vastfall"
-              data-caption="「Vastfall の論理は？」と尋ねると、前セッションで構築した物理・政治・文化の設定が一括で返ってくる">
-              <div class="shot">
-                <img src="images/Demo_EN_Ver2_whatLogicofVastfall.png" width="805" height="1325" loading="lazy"
-                  alt="N3MemoryCore demo — What is the logic of Vastfall">
-              </div>
-            </button>
-            <figcaption>「Vastfall の論理は？」と尋ねると、前セッションで構築した物理・政治・文化の設定が一括で返ってくる</figcaption>
-          </figure>
-
-          <figure class="demo-thumb">
-            <button type="button" class="zoom" data-zoom="images/Demo_EN_Ver2_Vasrfall%20endure.png"
-              data-alt="N3MemoryCore demo — Why does Vastfall endure"
-              data-caption="「なぜ Vastfall は続くのか」— 複数の記憶フラグメントを横断して統合回答を生成">
-              <div class="shot">
-                <img src="images/Demo_EN_Ver2_Vasrfall%20endure.png" width="924" height="1071" loading="lazy"
-                  alt="N3MemoryCore demo — Why does Vastfall endure">
-              </div>
-            </button>
-            <figcaption>「なぜ Vastfall は続くのか」— 複数の記憶フラグメントを横断して統合回答を生成</figcaption>
-          </figure>
-
-          <figure class="demo-thumb">
-            <button type="button" class="zoom" data-zoom="images/Demo_EN_Ver2_Vasrfall%20survival.png"
-              data-alt="N3MemoryCore demo — Vastfall doctrine of survival"
-              data-caption="「生存のドクトリン」— 蓄積されたロアから一貫した設定資料を即座に再構成">
-              <div class="shot">
-                <img src="images/Demo_EN_Ver2_Vasrfall%20survival.png" width="906" height="847" loading="lazy"
-                  alt="N3MemoryCore demo — Vastfall doctrine of survival">
-              </div>
-            </button>
-            <figcaption>「生存のドクトリン」— 蓄積されたロアから一貫した設定資料を即座に再構成</figcaption>
-          </figure>
-
-          <figure class="demo-thumb">
-            <button type="button" class="zoom" data-zoom="images/Demo_EN_Ver2_whatHoldsTogether.png"
-              data-alt="N3MemoryCore demo — What holds Vastfall together"
-              data-caption="「何が Vastfall をまとめているのか」— 確立されたロアから物理・文化の両軸を引き出し">
-              <div class="shot">
-                <img src="images/Demo_EN_Ver2_whatHoldsTogether.png" width="973" height="731" loading="lazy"
-                  alt="N3MemoryCore demo — What holds Vastfall together">
-              </div>
-            </button>
-            <figcaption>「何が Vastfall をまとめているのか」— 確立されたロアから物理・文化の両軸を引き出し</figcaption>
-          </figure>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== VIDEO ===== -->
-    <section id="video">
-      <div class="container">
-        <div class="video-grid">
-          <div class="sec-head">
-            <span class="eyebrow">Video</span>
-            <h2 class="sec-title">動画で見る N3MemoryCore</h2>
-            <p class="sec-desc">N3MemoryCore は、Claude Code に長期記憶を与える仕組みです。セットアップは Claude Code に任せるだけ。コードを書く必要はありません。</p>
-            <a href="https://www.youtube.com/watch?v=uFd7fOcofN0" target="_blank" rel="noopener" class="text-link ext">フル版を YouTube で見る</a>
-          </div>
-          <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/0v4xlxpycVA"
-              title="N3MemoryCore 紹介動画"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PRODUCTS ===== -->
-    <section id="products" class="bg-alt">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">Products</span>
-          <h2 class="sec-title">製品ラインナップ</h2>
-          <p class="sec-desc">無料のオープンソース版から、高機能なPro版まで。用途に合わせてお選びください。</p>
-        </div>
-
-        <div class="products-grid">
-
-          <!-- N3MC Free -->
-          <article class="p-card featured">
-            <div class="p-head">
-              <div>
-                <div class="p-tag">N3MC</div>
-                <h3>N3MC Free <span class="badge-hot">まずはここから</span></h3>
-                <p class="p-role">Claude Code 向けの永続メモリ</p>
-              </div>
-              <div class="price-block">
-                <span class="price-now">無料</span>
-              </div>
-            </div>
-            <p class="p-desc">AIアシスタント向け永続メモリツール。基本的な記憶機能を無料でご利用いただけます。GitHubにてオープンソース公開中。</p>
-            <p class="p-target"><strong>こんな人に</strong>Claude Code を日常的に使う全ての人。長期記憶をまずは無料で体験したい方</p>
-            <ul class="p-feats">
-              <li>Claude Code / IDE統合</li>
-              <li>基本的な永続メモリ機能</li>
-              <li>PyPI / GitHub公開（オープンソース）</li>
-              <li>コミュニティサポート</li>
-            </ul>
-            <div class="p-actions">
-              <a href="https://neuralnexusnote.booth.pm/items/8196713" target="_blank" rel="noopener"
-                class="btn btn-primary">BOOTHで入手（日本語版）</a>
-              <a href="doc/n3mc-free-guide.html" class="btn btn-ghost">はじめての方へ</a>
-            </div>
-            <div class="p-links">
-              <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/e5a3b4fe-3e64-4f38-8243-52bd82bb1330" target="_blank" rel="noopener"
-                class="text-link ext">Get on LemonSqueezy（English）</a>
-              <a href="https://github.com/NeuralNexusNote/n3mc-free" target="_blank" rel="noopener"
-                class="text-link ext">GitHubを見る</a>
-            </div>
-          </article>
-
-          <!-- N3MC Pro (hidden: sales suspended) -->
-          <article class="p-card" style="display:none">
-            <div class="p-head">
-              <div>
-                <div class="p-tag">N3MC</div>
-                <h3>N3MC Pro</h3>
-              </div>
-              <div class="price-block">
-                <span class="price-now">¥600 / $7</span>
-                <span class="price-was">¥1,000 / $15</span>
-                <span class="price-note">先着200名様限定特価</span>
-              </div>
-            </div>
-            <p class="p-desc">高度なメモリ管理・検索機能を備えたPro版。セッションを跨いだAIとの長期的な協働に最適です。</p>
-            <p class="p-target"><strong>こんな人に</strong>長編小説を書く方・研究者・長期プロジェクトの記録を残したい方</p>
-            <ul class="p-feats">
-              <li>Claude Code / IDE統合</li>
-              <li>高度なベクトル検索（sqlite-vec）</li>
-              <li>セッション管理・自動重要度付与</li>
-              <li>永続ストレージ（TTLなし）</li>
-              <li>コミュニティサポート</li>
-            </ul>
-            <div class="p-actions">
-              <a href="https://neuralnexusnote.booth.pm/items/8356547" target="_blank" rel="noopener"
-                class="btn btn-primary">BOOTHで購入（日本語版）</a>
-              <a href="doc/n3mc-pro-guide.html" class="btn btn-ghost">はじめての方へ</a>
-            </div>
-            <div class="p-links">
-              <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/da520bd7-3393-4a74-9a11-b76675180656" target="_blank" rel="noopener"
-                class="text-link ext">Get on LemonSqueezy（English）</a>
-            </div>
-          </article>
-
-          <!-- N3MCMCP Lite -->
-          <article class="p-card">
-            <div class="p-head">
-              <div>
-                <div class="p-tag">N3MCMCP</div>
-                <h3>N3MCMCP Lite</h3>
-                <p class="p-role">MCP 対応の 7 日間ワーキングメモリ</p>
-              </div>
-              <div class="price-block">
-                <span class="price-now">無料</span>
-              </div>
-            </div>
-            <p class="p-desc">MCP（Model Context Protocol）対応の軽量ワーキングメモリサーバー。Claude Code マーケットプレイスから1コマンドで導入可能。MCP公式Registry登録済み。</p>
-            <p class="p-target"><strong>こんな人に</strong>MCP 対応エージェントで、短期作業メモを試したい方</p>
-            <ul class="p-feats">
-              <li>Claude Code Marketplace 対応</li>
-              <li><a href="https://registry.modelcontextprotocol.io/" target="_blank" rel="noopener">MCP 公式 Registry</a> 登録済み</li>
-              <li>7日間ワーキングメモリ（Redis）</li>
-              <li>多言語対応（日本語・中国語・韓国語ほか）</li>
-              <li>PyPI / GitHub 公開（オープンソース）</li>
-            </ul>
-            <div class="p-actions">
-              <a href="https://neuralnexusnote.booth.pm/items/8288567" target="_blank" rel="noopener"
-                class="btn btn-primary">BOOTHで入手（日本語版）</a>
-              <a href="doc/n3mcmcp-lite-guide.html" class="btn btn-ghost">はじめての方へ</a>
-            </div>
-            <div class="p-links">
-              <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/9cec0369-6d3b-467b-b854-5e9c22c632dc" target="_blank" rel="noopener"
-                class="text-link ext">Get on LemonSqueezy（English）</a>
-              <a href="https://github.com/NeuralNexusNote/n3mcmcp-lite" target="_blank" rel="noopener"
-                class="text-link ext">GitHubを見る</a>
-            </div>
-          </article>
-
-          <!-- N3MCMCP Pro (hidden: sales suspended) -->
-          <article class="p-card" style="display:none">
-            <div class="p-head">
-              <div>
-                <div class="p-tag">N3MCMCP</div>
-                <h3>N3MCMCP Pro</h3>
-              </div>
-              <div class="price-block">
-                <span class="price-now">¥1,900 / $14</span>
-                <span class="price-was">¥4,300 / $29</span>
-                <span class="price-note">先着200名様限定特価</span>
-              </div>
-            </div>
-            <p class="p-desc">MCP対応の永続メモリサーバー。SQLite + sqlite-vecによる高速ベクトル検索でAIの長期記憶を実現します。</p>
-            <p class="p-target"><strong>こんな人に</strong>MCP 環境で永続記憶＋エンティティ索引を本格運用したい方</p>
-            <ul class="p-feats">
-              <li>Claude Code / IDE統合</li>
-              <li>永続ベクトル検索（sqlite-vec）</li>
-              <li>MCP完全対応</li>
-              <li>コミュニティサポート</li>
-            </ul>
-            <div class="p-actions">
-              <a href="https://neuralnexusnote.booth.pm/items/8356734" target="_blank" rel="noopener"
-                class="btn btn-primary">BOOTHで購入（日本語版）</a>
-              <a href="doc/n3mcmcp-pro-guide.html" class="btn btn-ghost">はじめての方へ</a>
-            </div>
-            <div class="p-links">
-              <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/561b2da0-99c3-4640-961c-ef430ffec4b5" target="_blank" rel="noopener"
-                class="text-link ext">Get on LemonSqueezy（English）</a>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- launch-box hidden: sales suspended -->
-        <div class="launch-box" style="display:none">
-          <strong>ローンチ特価について：</strong>
-          先着200名様限定の特別価格です。200個売り切れ次第、通常価格（N3MC Pro: ¥1,000 / $15 / N3MCMCP Pro: ¥4,300 / $29）に変更となります。お早めにどうぞ。
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== COMPARISON ===== -->
-    <section id="compare">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">Why N3MC</span>
-          <h2 class="sec-title">他の記憶ツールとの違い</h2>
-          <p class="sec-desc">完全保存・ローカル動作・追加コストなし。N3MemoryCore が選ばれる理由。</p>
-        </div>
-
-        <div class="compare-table-wrap">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th scope="col"><span class="sr-only">比較項目</span></th>
-                <th scope="col" class="compare-col-highlight">N3MC</th>
-                <th scope="col">CLAUDE.md</th>
-                <th scope="col">auto-memory</th>
-                <th scope="col">mem0</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">会話を全文保存</th>
-                <td class="compare-col-highlight"><span class="mk mk-yes" role="img" aria-label="対応">●</span></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span> <small>選別</small></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span> <small>要約</small></td>
-              </tr>
-              <tr>
-                <th scope="row">ローカル動作</th>
-                <td class="compare-col-highlight"><span class="mk mk-yes" role="img" aria-label="対応">●</span></td>
-                <td><span class="mk mk-yes" role="img" aria-label="対応">●</span></td>
-                <td><span class="mk mk-yes" role="img" aria-label="対応">●</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span> <small>クラウド前提</small></td>
-              </tr>
-              <tr>
-                <th scope="row">追加 LLM コスト</th>
-                <td class="compare-col-highlight">なし</td>
-                <td>なし</td>
-                <td>なし</td>
-                <td>あり <small>API 課金</small></td>
-              </tr>
-              <tr>
-                <th scope="row">日本語・Windows 最適化</th>
-                <td class="compare-col-highlight"><span class="mk mk-yes" role="img" aria-label="対応">●</span> <small>cp932 / 日本語フル対応</small></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span> <small>英語前提</small></td>
-              </tr>
-              <tr>
-                <th scope="row">時系列・期間での取り出し</th>
-                <td class="compare-col-highlight"><span class="mk mk-yes" role="img" aria-label="対応">●</span> <small><code>--since</code> / <code>--recall-thread</code></small></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span></td>
-              </tr>
-              <tr>
-                <th scope="row">人物・固有名詞索引（Pro）</th>
-                <td class="compare-col-highlight"><span class="mk mk-yes" role="img" aria-label="対応">●</span> <small>登場人物の通史を一発取得</small></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span></td>
-                <td><span class="mk mk-no" role="img" aria-label="非対応">—</span></td>
-                <td><span class="mk mk-part" role="img" aria-label="一部対応">△</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <ul class="compare-legend">
-          <li><span class="mk mk-yes">●</span> 対応</li>
-          <li><span class="mk mk-part">△</span> 一部対応</li>
-          <li><span class="mk mk-no">—</span> 非対応</li>
-        </ul>
-        <p class="compare-note">
-          ※ 各プロジェクトの仕様・運用形態は変動します。本表は 2026年5月時点の調査に基づく比較です。
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== HOW TO GET ===== -->
-    <section id="howto">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow">How to Get</span>
-          <h2 class="sec-title">入手方法</h2>
-          <p class="sec-desc">国内・海外それぞれに対応した窓口をご用意しています。</p>
-        </div>
-
-        <div class="how-list">
-
-          <div class="how-card">
-            <div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg></div>
-            <div>
-              <h3>国内購入（日本）<span class="tag-badge">BOOTH</span></h3>
-              <p>国内のお客様はBOOTHにてご購入いただけます。クレジットカード・コンビニ払い・PayPay等に対応しています。</p>
-            </div>
-            <ul>
-              <li>クレジットカード（Visa / Master / AMEX）</li>
-              <li>コンビニ決済・PayPay</li>
-              <li>銀行振込</li>
-            </ul>
-            <a href="https://neuralnexusnote.booth.pm/" target="_blank" rel="noopener"
-              class="btn btn-outline btn-sm">BOOTHストアへ</a>
-          </div>
-
-          <div class="how-card">
-            <div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
-            <div>
-              <h3>海外購入（International）<span class="tag-badge">LemonSqueezy</span></h3>
-              <p lang="en">International customers can purchase via LemonSqueezy. Credit cards and PayPal accepted.</p>
-            </div>
-            <ul lang="en">
-              <li>Credit Cards (Visa / Mastercard / AMEX)</li>
-              <li>PayPal</li>
-              <li>Powered by Stripe</li>
-            </ul>
-            <a href="https://neuralnexusnote.lemonsqueezy.com/" target="_blank" rel="noopener"
-              class="btn btn-outline btn-sm">LemonSqueezy Store</a>
-          </div>
-
-          <div class="how-card">
-            <div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></div>
-            <div>
-              <h3>無料版・OSSの入手<span class="tag-badge">GitHub / PyPI</span></h3>
-              <p>N3MC FreeおよびN3MCMCP LiteはGitHub・PyPIで無料公開しています。N3MCMCP LiteはMCP公式Registryにも登録済みで、Claude Codeから1コマンドで導入可能です。</p>
-            </div>
-            <ul>
-              <li>GitHub: NeuralNexusNote 組織</li>
-              <li>PyPI: n3memorycore-mcp-lite</li>
-              <li><a href="https://registry.modelcontextprotocol.io/" target="_blank" rel="noopener">MCP 公式 Registry</a> 登録</li>
-              <li>Apache License 2.0</li>
-            </ul>
-            <a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener"
-              class="btn btn-outline btn-sm"><svg class="icon icon-sm icon-fill" aria-hidden="true"><use href="#i-github"/></svg>GitHubへ</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="bg-alt">
-      <div class="container">
-        <div class="about-wrap">
-          <div class="about-text">
-            <span class="eyebrow">About</span>
-            <h2>NeuralNexusNoteについて</h2>
-            <p>NeuralNexusNote（ニューラルネクサスノート）は、AIアシスタントをより賢く・より便利にするためのツール開発に特化した組織です。</p>
-            <p>私たちのN3MCシリーズは、AIとの会話を跨いで情報を記憶し続ける「永続的なAIメモリ」を実現します。開発者からAI活用ユーザーまで、幅広い方に使っていただけるツールを提供しています。</p>
-            <p>オープンソースを中心に据えながら、プレミアムな機能はPro版として提供するフリーミアムモデルで運営しています。</p>
-            <a href="contact.html" class="btn btn-outline">お問い合わせ</a>
-          </div>
-          <div>
-            <blockquote class="hero-quote">
-              <p>「コードは影であり、指示は光である。」</p>
-              <p class="hero-quote-en" lang="en">"Code is the shadow; the Instruction is the light."</p>
-            </blockquote>
-            <ul class="principles">
-              <li>
-                <h3>オープンソースを中心に</h3>
-                <p>N3MC Free と N3MCMCP Lite は、GitHub と PyPI で無料公開しています（Apache License 2.0）。</p>
-              </li>
-              <li>
-                <h3>記憶は手元に</h3>
-                <p>記憶は自分の PC の中に保存されます。クラウドのサービスには置きません。</p>
-              </li>
-              <li>
-                <h3>導入は Claude Code に任せる</h3>
-                <p>セットアップは Claude Code に頼むだけ。コードを書く必要はありません。</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
-          <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
-        </div>
-        <div class="footer-col">
-          <h4>製品・サービス</h4>
-          <ul>
-            <li><a href="index.html#products">N3MC Free</a></li>
-            <li><a href="index.html#howto">N3MC Pro</a></li>
-            <li><a href="index.html#products">N3MCMCP Lite</a></li>
-            <li><a href="index.html#howto">N3MCMCP Pro</a></li>
-            <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>法的情報・サポート</h4>
-          <ul>
-            <li><a href="tokutei.html">特定商取引法に基づく表記</a></li>
-            <li><a href="privacy.html">プライバシーポリシー</a></li>
-            <li><a href="terms.html">利用規約</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>情報発信</h4>
-          <ul>
-            <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
-            <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
-            <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 NeuralNexusNote. All rights reserved.</p>
-        <div class="footer-links-row">
-          <a href="tokutei.html">特定商取引法</a>
-          <a href="privacy.html">プライバシー</a>
-          <a href="terms.html">利用規約</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Screenshot zoom -->
-  <dialog class="lightbox" id="lightbox" aria-label="画像の拡大表示">
-    <div class="lightbox-bar">
-      <p></p>
-      <button type="button" class="lightbox-close" aria-label="閉じる">
-        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
-      </button>
-    </div>
-    <div class="lightbox-body"><img alt=""></div>
-  </dialog>
-
-  <script src="js/site.js"></script>
+<header><div class="wrap bar"><a class="brand" href="index.html"><img src="images/logo-mark.png" alt="" width="32" height="32">NeuralNexusNote</a>
+<nav><a href="#products" class=""><span lang="ja">製品一覧</span><span lang="en">Editions</span></a><a href="#how" class=""><span lang="ja">仕組み</span><span lang="en">How it works</span></a><a href="#demo" class=""><span lang="ja">デモ</span><span lang="en">Demo</span></a></nav>
+<div class="languages" role="group" aria-label="言語 / Language"><button type="button" data-language="ja" aria-label="日本語">JA</button><button type="button" data-language="en" aria-label="English">EN</button></div></div></header>
+<main class="wrap">
+<section class="hero"><div><p class="kicker">N3MemoryCore</p>
+<h1><span lang="ja">開発の続きを、<br><em>記憶とともに。</em></span><span lang="en">Pick up where<br><em>your code left off.</em></span></h1>
+<p class="lead"><span lang="ja">Claude Code・Codex の開発者向けローカル記憶ツール。設計を決めた理由も、デバッグで試したことも、過去の会話から探せます。</span><span lang="en">Local memory for developers using Claude Code and Codex. Search earlier conversations for the reasoning behind a design or the fixes you already tried.</span></p>
+<div class="acts"><a href="#products" class="action"><span lang="ja">製品を選ぶ</span><span lang="en">Explore editions</span></a><a href="#demo" class="action secondary"><span lang="ja">動作画面を見る</span><span lang="en">See the demo</span></a></div></div>
+<figure class="plate" aria-label="N3MemoryCore"><div class="plate-head"><span>NeuralNexusNote</span><span>N3MC</span></div><div class="stack" aria-hidden="true"><i class="layer"></i><i class="layer"></i><div class="layer"><div class="chip">N3</div></div></div><figcaption class="plate-foot"><strong>MEMORY CORE</strong><span lang="ja">記憶層のイメージ</span><span lang="en">Concept illustration</span></figcaption></figure></section>
+<section class="block" id="products"><p class="kicker">Editions</p><h2 id="compare"><span lang="ja">開発環境から選ぶ</span><span lang="en">Choose your environment</span></h2><div class="editions"><article class="edition"><div class="edition-top"><small>Claude Code</small><b><span lang="ja">無料</span><span lang="en">Free</span></b></div>
+<h3>N3MC Free</h3><p><span lang="ja">設計や実装について交わした会話をローカルに保存し、次の作業で検索できます。</span><span lang="en">Keep design and implementation conversations on your machine and search them in a later session.</span></p>
+<div class="edition-links"><a href="https://github.com/NeuralNexusNote/n3mc-free" class="action secondary"><span lang="ja">GitHubで見る</span><span lang="en">View on GitHub</span></a>
+<div><a href="https://neuralnexusnote.booth.pm/items/8196713" class=""><span lang="ja">BOOTH（日本語版）</span><span lang="en">BOOTH (Japanese)</span></a> · <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/e5a3b4fe-3e64-4f38-8243-52bd82bb1330" class=""><span lang="ja">英語版ストア</span><span lang="en">English store</span></a></div><a href="doc/n3mc-free-guide.html" class=""><span lang="ja">導入ガイド</span><span lang="en">Setup guide (JA)</span></a></div></article>
+<article class="edition"><div class="edition-top"><small>Codex</small><b><span lang="ja">無料</span><span lang="en">Free</span></b></div>
+<h3>N3MC Free for Codex</h3><p><span lang="ja">Codex のフックを通じて会話を保存・検索。記憶は手元の SQLite に蓄積します。</span><span lang="en">Save and retrieve conversations through Codex hooks, with a SQLite database on your machine.</span></p>
+<div class="edition-links"><a href="https://github.com/NeuralNexusNote/n3mc-free-codex/releases" class="action secondary"><span lang="ja">配布ファイルを見る</span><span lang="en">Browse releases</span></a>
+<a href="https://github.com/NeuralNexusNote/n3mc-free-codex" class=""><span lang="ja">導入ガイド</span><span lang="en">Setup guide</span></a></div></article>
+<article class="edition"><div class="edition-top"><small>MCP</small><b><span lang="ja">無料</span><span lang="en">Free</span></b></div>
+<h3>N3MCMCP Lite</h3><p><span lang="ja">MCP 対応エージェントに短期の作業メモを追加。Redis に保存したメモの保持期間は7日間です。</span><span lang="en">Give an MCP-compatible agent working memory. Notes are stored in Redis with a seven-day lifetime.</span></p>
+<div class="edition-links"><a href="https://github.com/NeuralNexusNote/n3mcmcp-lite" class="action secondary"><span lang="ja">GitHubで見る</span><span lang="en">View on GitHub</span></a>
+<div><a href="https://neuralnexusnote.booth.pm/items/8288567" class=""><span lang="ja">BOOTH（日本語版）</span><span lang="en">BOOTH (Japanese)</span></a> · <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/9cec0369-6d3b-467b-b854-5e9c22c632dc" class=""><span lang="ja">英語版ストア</span><span lang="en">English store</span></a></div><a href="doc/n3mcmcp-lite-guide.html" class=""><span lang="ja">導入ガイド</span><span lang="en">Setup guide (JA)</span></a></div></article></div>
+<details class="pro" id="howto"><summary><span lang="ja">Pro版の販売・導入について</span><span lang="en">Pro editions and availability</span></summary><p><span lang="ja">N3MC Pro・N3MCMCP Pro は販売休止中です。再開時期・価格は [要確認]。製品の仕様はガイドでご覧いただけます。</span><span lang="en">Sales of N3MC Pro and N3MCMCP Pro are paused. Return date and pricing [要確認 / to be confirmed]. The guides describe each edition.</span></p>
+<p><a href="doc/n3mc-pro-guide.html" class=""><span lang="ja">N3MC Pro ガイド</span><span lang="en">N3MC Pro guide (JA)</span></a> · <a href="doc/n3mcmcp-pro-guide.html" class=""><span lang="ja">MCP Pro ガイド</span><span lang="en">MCP Pro guide (JA)</span></a> · <a href="contact.html" class=""><span lang="ja">お問い合わせ</span><span lang="en">Contact (JA)</span></a></p></details></section>
+<section id="how" class="block"><p class="kicker">Workflow · N3MC Free</p><h2><span lang="ja">会話を、次の実装に活かす</span><span lang="en">From conversation to implementation</span></h2>
+<div class="steps"><article><h3><span lang="ja">環境を接続</span><span lang="en">Connect your agent</span></h3><p><span lang="ja">利用するエージェント用の版を導入し、ガイドに沿ってフックを有効にします。</span><span lang="en">Install the edition for your coding agent and follow its guide to enable the hooks.</span></p></article>
+<article><h3><span lang="ja">開発の経緯を残す</span><span lang="en">Keep the reasoning</span></h3><p><span lang="ja">会話をローカルに保存。コードだけでは読み取れない設計判断も、会話の言葉で残せます。</span><span lang="en">Store conversations locally, including the design decisions that are hard to reconstruct from code alone.</span></p></article>
+<article><h3><span lang="ja">判断に立ち返る</span><span lang="en">Revisit a decision</span></h3><p><span lang="ja">次のセッションで関連する記録を検索し、そのときの前提を確認して作業を再開します。</span><span lang="en">Search for relevant records in a later session and check the original assumptions before continuing.</span></p></article></div></section>
+<section id="demo" class="demo block"><div><p class="kicker">Claude Code · Demo</p><h2><span lang="ja">記憶を呼び出した画面</span><span lang="en">A look at recall</span></h2><p><span lang="ja">Claude Code が以前の回答を参照したときの画面です。画像を選ぶと、原寸で確認できます。</span><span lang="en">This Claude Code session refers back to an earlier answer. Open the screenshot to read it at full size.</span></p></div>
+<span lang="ja"><a href="images/hero-recall-jp.webp"><img loading="lazy" src="images/hero-recall-jp.webp" alt="Claude Code が以前の回答を表で示した日本語のデモ画面"></a></span><span lang="en"><a href="images/Demo_EN_Ver2_whatHoldsTogether.png"><img loading="lazy" src="images/Demo_EN_Ver2_whatHoldsTogether.png" alt="Claude Code answering a question about the Vastfall setting"></a></span></section></main>
+<footer id="about"><div class="wrap"><strong class="brand">NeuralNexusNote</strong><p><span lang="ja">AIエージェントの記憶ツールを開発しています。</span><span lang="en">We build memory tools for AI agents.</span></p><div class="footer-links"><a href="contact.html" class=""><span lang="ja">お問い合わせ</span><span lang="en">Contact (JA)</span></a><a href="tokutei.html" class=""><span lang="ja">特定商取引法に基づく表記</span><span lang="en">Commercial disclosure (JA)</span></a><a href="privacy.html" class=""><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy (JA)</span></a><a href="terms.html" class=""><span lang="ja">利用規約</span><span lang="en">Terms (JA)</span></a><a href="https://github.com/NeuralNexusNote/">GitHub</a><a href="https://x.com/NeuralNexusNote">X</a><a href="https://zenn.dev/arnolfjp">Zenn</a></div></div></footer>
+<script>const languageButtons = document.querySelectorAll("[data-language]");
+function setLanguage(language) {
+  document.documentElement.lang = language;
+  document.title = language === "ja" ? "N3MemoryCore｜開発エージェントの長期記憶" : "N3MemoryCore | Memory for coding agents";
+  for (const button of languageButtons) button.setAttribute("aria-pressed", String(button.dataset.language === language));
+}
+let preferred;
+try { preferred = localStorage.getItem("n3-site-language"); } catch {}
+const browserLanguage = (navigator.languages || [navigator.language]).find(value => /^(ja|en)(-|$)/i.test(value));
+setLanguage(["en","ja"].includes(preferred) ? preferred : /^ja/i.test(browserLanguage || "") ? "ja" : "en");
+for (const button of languageButtons) {
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.language);
+    try { localStorage.setItem("n3-site-language", button.dataset.language); } catch {}
+  });
+}
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) if (entry.isIntersecting) {
+      entry.target.classList.add("enter");
+      observer.unobserve(entry.target);
+    }
+  });
+  document.querySelectorAll(".edition, .steps article, .demo").forEach(el => observer.observe(el));
+}</script>
 </body>
-
 </html>
