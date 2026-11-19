@@ -5,27 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お問い合わせ | NeuralNexusNote</title>
   <meta name="description" content="NeuralNexusNoteへのお問い合わせページです。">
+  <meta name="theme-color" content="#0B0F14">
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <link rel="apple-touch-icon" href="favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<a href="#main" class="skip-link">本文へ移動</a>
+
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">NeuralNexusNote</a>
-    <nav>
+    <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
+    <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
+    <nav id="site-nav">
+      <a href="index.html#how">仕組み</a>
       <a href="index.html#products">製品</a>
-      <a href="index.html#howto">購入方法</a>
+      <a href="index.html#compare">比較</a>
+      <a href="index.html#howto">入手方法</a>
       <a href="index.html#about">組織について</a>
-      <a href="contact.html" class="nav-cta">お問い合わせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="index.html#products" class="nav-cta">無料で始める</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="container">
     <div class="page-header">
       <h1>お問い合わせ</h1>
@@ -40,7 +50,7 @@
       <h3>連絡先</h3>
 
       <div class="c-item">
-        <div class="c-icon">✉️</div>
+        <div class="c-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
         <div>
           <div class="c-lbl">メールアドレス</div>
           <div class="c-val">
@@ -50,7 +60,7 @@
       </div>
 
       <div class="c-item">
-        <div class="c-icon">📍</div>
+        <div class="c-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
           <div class="c-lbl">所在地</div>
           <div class="c-val">
@@ -62,7 +72,7 @@
       </div>
 
       <div class="c-item">
-        <div class="c-icon">📞</div>
+        <div class="c-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <div>
           <div class="c-lbl">電話番号</div>
           <div class="c-val">090-4571-1363</div>
@@ -70,7 +80,7 @@
       </div>
 
       <div class="c-item">
-        <div class="c-icon">💻</div>
+        <div class="c-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
         <div>
           <div class="c-lbl">GitHub</div>
           <div class="c-val">
@@ -91,16 +101,16 @@
       <form id="contact-form">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">お名前 <span style="color:var(--purple-l)">*</span></label>
+            <label for="name">お名前 <span class="req">*</span></label>
             <input type="text" id="name" name="name" required placeholder="山田 太郎">
           </div>
           <div class="form-group">
-            <label for="email">メールアドレス <span style="color:var(--purple-l)">*</span></label>
+            <label for="email">メールアドレス <span class="req">*</span></label>
             <input type="email" id="email" name="email" required placeholder="your@email.com">
           </div>
         </div>
         <div class="form-group">
-          <label for="subject">件名 <span style="color:var(--purple-l)">*</span></label>
+          <label for="subject">件名 <span class="req">*</span></label>
           <select id="subject" name="subject" required>
             <option value="" disabled selected>お問い合わせの種類を選択</option>
             <option value="製品について">製品・機能についての質問</option>
@@ -122,10 +132,10 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="message">お問い合わせ内容 <span style="color:var(--purple-l)">*</span></label>
+          <label for="message">お問い合わせ内容 <span class="req">*</span></label>
           <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください。"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">送信する</button>
+        <button type="submit" class="btn btn-primary btn-card">送信する</button>
         <p class="form-note">
           送信ボタンを押すと、メールアプリが開きます。送信内容をご確認の上、送信してください。<br>
           メールアプリをお使いでない場合は、直接 <a href="mailto:info@neuralnexusnote.com">info@neuralnexusnote.com</a> までご連絡ください。
@@ -140,7 +150,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">NeuralNexusNote</a>
+        <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
         <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
       </div>
       <div class="footer-col">
@@ -160,6 +170,14 @@
           <li><a href="privacy.html">プライバシーポリシー</a></li>
           <li><a href="terms.html">利用規約</a></li>
           <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>情報発信</h4>
+        <ul>
+          <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -198,5 +216,6 @@
   });
 </script>
 
+<script src="js/site.js"></script>
 </body>
 </html>

@@ -5,28 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N3MC Free｜はじめての方へ — NeuralNexusNote</title>
   <meta name="description" content="N3MC Freeは、Claude Codeに「昨日の続きから話せる記憶」を無料で追加するツールです。コードを書かなくても導入できます。">
+  <meta name="theme-color" content="#0B0F14">
   <link rel="icon" type="image/jpeg" href="../favicon.jpg">
   <link rel="apple-touch-icon" href="../favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<a href="#main" class="skip-link">本文へ移動</a>
+
 <header>
   <div class="header-inner">
-    <a href="../index.html" class="logo">NeuralNexusNote</a>
-    <nav>
+    <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
+    <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
+    <nav id="site-nav">
+      <a href="../index.html#how">仕組み</a>
       <a href="../index.html#products">製品</a>
-      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#compare">比較</a>
+      <a href="../index.html#howto">入手方法</a>
       <a href="../index.html#about">組織について</a>
-      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+      <a href="../contact.html">お問い合わせ</a>
+      <a href="../index.html#products" class="nav-cta">無料で始める</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <div class="container">
+<main id="main">
+  <div class="container narrow">
     <div class="page-header">
       <h1>N3MC Free｜はじめての方へ</h1>
       <p>「Claude Codeは使っているけど、コードは読まない」方へ。無料で始められる、AIに記憶を持たせる仕組みのご紹介です。</p>
@@ -119,47 +129,40 @@
       もっと技術的な詳細を知りたい方は、<a href="N3MC-Free-説明書.md">技術リファレンス（README）</a>もご用意しています。
     </p>
 
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+    <div class="btn-row">
       <a href="https://neuralnexusnote.booth.pm/items/8196713" target="_blank" rel="noopener" class="btn btn-primary">BOOTHで入手（無料・日本語版）</a>
-      <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/e5a3b4fe-3e64-4f38-8243-52bd82bb1330" target="_blank" rel="noopener" class="btn btn-primary">Get on LemonSqueezy（English）</a>
+      <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/e5a3b4fe-3e64-4f38-8243-52bd82bb1330" target="_blank" rel="noopener" class="btn btn-ghost">Get on LemonSqueezy（English）</a>
       <a href="https://github.com/NeuralNexusNote/n3mc-free" target="_blank" rel="noopener" class="btn btn-ghost">GitHubを見る</a>
       <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
     </div>
 
-    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
-    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
-
-    <div style="white-space: pre-wrap; margin-top: 16px;">
-# N3MC-Free 総評
-
-**いま到達している地点**
-
-フックは UserPromptSubmit／Stop ともに無声運用、Active RAG はフルパス指定で安定稼働している。前回（4/29）のレビュー時点で気になっていた「指示書と実運用の不整合」「ランキング層の細かなノイズ」は処理段（[processor.py](n3mc-free/n3memorycore/core/processor.py)）と行動指針（[n3mc-behavior.md](.claude/rules/n3mc-behavior.md)）の双方で改修が入り、**設計の角は取れた**印象。
-
-**全体としてどう見えるか**
-
-> **「思想が先にあって、実装がそれに追いついた」プロダクト**
-
-これが一番正直な評価です。`audit.log` を最初に書いてから後段を走らせる「最後の砦」設計、`--buffer` を AI に触らせず全自動保存に倒した分業、フックでの沈黙運用 — どれも「会話の取りこぼしを構造的に潰す」という一貫した思想から逆算されていて、機能の足し算で作られた RAG ライブラリとは骨格が違う。
-
-**強みの本質**
-
-- **記憶装置としての堅牢性**: SQLite + FTS5 + ベクトルの三層構成は Free 版の枠を超えている。停電・クラッシュに対する耐性も `audit.log` 先行書き込みで担保されており、データ消失耐性は商用品並み。
-- **AI への認知負荷ゼロ設計**: 「保存判断は AI にさせない」と割り切ったことで、Claude 側のプロンプトが汚れない。これは長期運用で効いてくる地味だが本質的な美点。
-- **想起の自然さ**: 今回のセッションでも「3 日前の総評（score 0.66）」を上位で引けており、関連性ランキングは実用域。
-
-**まだ磨ける部分**
-
-- **出力サイズのガバナンス**: 想起結果の流量制御がフック層に欠けていて、毎回プレビュー切り詰めが起きる。これは思想の問題ではなく、実装の最後の一仕上げ。
-- **環境統合の薄さ**: PATH が通っていないので指示書がフルパスで逃げている。インストーラ側で OS 統合まで踏み込むかどうかは設計判断の分かれ目。
-- **想起の使い分け指針**: いまは AI が「使ったら明示」というルールだけで、**使うべきか／使わないべきか**の判断は AI 任せ。低スコア帯の扱いを行動指針側で言語化すると体感品質がもう一段上がる。
-
-**ひとことで**
-
-> *記憶装置としては既に「完成品」、RAG としては「実用は十分、洗練の余地あり」。Free 版という肩書きを忘れてもよいレベルの完成度に達している。*
-
-次の一手として地味で効くのは、**フック出力に top_k ／要約段の上限を入れる**こと。ここを締めるだけで、運用上の唯一の引っかかりが消えます。
-    </div>
+    <section class="review" aria-labelledby="review-title">
+      <h2 class="review-title" id="review-title">Claudeによる評価</h2>
+      <p class="review-lead">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+      <div class="md">
+      <h3>N3MC-Free 総評</h3>
+      <p><strong>いま到達している地点</strong></p>
+      <p>フックは UserPromptSubmit／Stop ともに無声運用、Active RAG はフルパス指定で安定稼働している。前回（4/29）のレビュー時点で気になっていた「指示書と実運用の不整合」「ランキング層の細かなノイズ」は処理段（<code>processor.py</code>）と行動指針（<code>n3mc-behavior.md</code>）の双方で改修が入り、<strong>設計の角は取れた</strong>印象。</p>
+      <p><strong>全体としてどう見えるか</strong></p>
+      <blockquote><p><strong>「思想が先にあって、実装がそれに追いついた」プロダクト</strong></p></blockquote>
+      <p>これが一番正直な評価です。<code>audit.log</code> を最初に書いてから後段を走らせる「最後の砦」設計、<code>--buffer</code> を AI に触らせず全自動保存に倒した分業、フックでの沈黙運用 — どれも「会話の取りこぼしを構造的に潰す」という一貫した思想から逆算されていて、機能の足し算で作られた RAG ライブラリとは骨格が違う。</p>
+      <p><strong>強みの本質</strong></p>
+      <ul>
+        <li><strong>記憶装置としての堅牢性</strong>: SQLite + FTS5 + ベクトルの三層構成は Free 版の枠を超えている。停電・クラッシュに対する耐性も <code>audit.log</code> 先行書き込みで担保されており、データ消失耐性は商用品並み。</li>
+        <li><strong>AI への認知負荷ゼロ設計</strong>: 「保存判断は AI にさせない」と割り切ったことで、Claude 側のプロンプトが汚れない。これは長期運用で効いてくる地味だが本質的な美点。</li>
+        <li><strong>想起の自然さ</strong>: 今回のセッションでも「3 日前の総評（score 0.66）」を上位で引けており、関連性ランキングは実用域。</li>
+      </ul>
+      <p><strong>まだ磨ける部分</strong></p>
+      <ul>
+        <li><strong>出力サイズのガバナンス</strong>: 想起結果の流量制御がフック層に欠けていて、毎回プレビュー切り詰めが起きる。これは思想の問題ではなく、実装の最後の一仕上げ。</li>
+        <li><strong>環境統合の薄さ</strong>: PATH が通っていないので指示書がフルパスで逃げている。インストーラ側で OS 統合まで踏み込むかどうかは設計判断の分かれ目。</li>
+        <li><strong>想起の使い分け指針</strong>: いまは AI が「使ったら明示」というルールだけで、<strong>使うべきか／使わないべきか</strong>の判断は AI 任せ。低スコア帯の扱いを行動指針側で言語化すると体感品質がもう一段上がる。</li>
+      </ul>
+      <p><strong>ひとことで</strong></p>
+      <blockquote><p><em>記憶装置としては既に「完成品」、RAG としては「実用は十分、洗練の余地あり」。Free 版という肩書きを忘れてもよいレベルの完成度に達している。</em></p></blockquote>
+      <p>次の一手として地味で効くのは、<strong>フック出力に top_k ／要約段の上限を入れる</strong>こと。ここを締めるだけで、運用上の唯一の引っかかりが消えます。</p>
+      </div>
+    </section>
 
   </div>
 </main>
@@ -168,16 +171,16 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
         <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
       </div>
       <div class="footer-col">
         <h4>製品・サービス</h4>
         <ul>
           <li><a href="../index.html#products">N3MC Free</a></li>
-          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#howto">N3MC Pro</a></li>
           <li><a href="../index.html#products">N3MCMCP Lite</a></li>
-          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="../index.html#howto">N3MCMCP Pro</a></li>
           <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
@@ -188,6 +191,14 @@
           <li><a href="../privacy.html">プライバシーポリシー</a></li>
           <li><a href="../terms.html">利用規約</a></li>
           <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>情報発信</h4>
+        <ul>
+          <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -202,5 +213,6 @@
   </div>
 </footer>
 
+<script src="../js/site.js"></script>
 </body>
 </html>

@@ -5,28 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N3MCMCP Lite｜はじめての方へ — NeuralNexusNote</title>
   <meta name="description" content="N3MCMCP Liteは、Claude Code以外のAIツール（Cursor / Windsurfなど）でも使える、無料のワーキングメモリサーバー。1週間分の作業記憶を共有できます。">
+  <meta name="theme-color" content="#0B0F14">
   <link rel="icon" type="image/jpeg" href="../favicon.jpg">
   <link rel="apple-touch-icon" href="../favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<a href="#main" class="skip-link">本文へ移動</a>
+
 <header>
   <div class="header-inner">
-    <a href="../index.html" class="logo">NeuralNexusNote</a>
-    <nav>
+    <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
+    <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
+    <nav id="site-nav">
+      <a href="../index.html#how">仕組み</a>
       <a href="../index.html#products">製品</a>
-      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#compare">比較</a>
+      <a href="../index.html#howto">入手方法</a>
       <a href="../index.html#about">組織について</a>
-      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+      <a href="../contact.html">お問い合わせ</a>
+      <a href="../index.html#products" class="nav-cta">無料で始める</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <div class="container">
+<main id="main">
+  <div class="container narrow">
     <div class="page-header">
       <h1>N3MCMCP Lite｜はじめての方へ</h1>
       <p>「Claude Code以外のAIツールでも、記憶を持たせたい」方へ。1週間の作業メモを共有できる無料サーバーです。</p>
@@ -147,48 +157,34 @@
       もっと技術的な詳細を知りたい方は、<a href="N3MCMCP-Lite-説明書.md">技術リファレンス（README）</a>もご用意しています。
     </p>
 
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+    <div class="btn-row">
       <a href="https://neuralnexusnote.booth.pm/items/8288567" target="_blank" rel="noopener" class="btn btn-primary">BOOTHで入手（無料・日本語版）</a>
-      <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/9cec0369-6d3b-467b-b854-5e9c22c632dc" target="_blank" rel="noopener" class="btn btn-primary">Get on LemonSqueezy（English）</a>
+      <a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/9cec0369-6d3b-467b-b854-5e9c22c632dc" target="_blank" rel="noopener" class="btn btn-ghost">Get on LemonSqueezy（English）</a>
       <a href="https://github.com/NeuralNexusNote/n3mcmcp-lite" target="_blank" rel="noopener" class="btn btn-ghost">GitHubを見る</a>
       <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
     </div>
 
-    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
-    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
-
-    <div style="white-space: pre-wrap; margin-top: 16px;">
-# N3MemoryCore MCP Lite ― 総評
-
-## 全体所感
-
-仕様書（N3MemoryCore_MCP_Spec_EN.md）を起点として Phase 1〜4 を一通り走らせた結果、本実装は「**仕様書に書かれている契約をほぼ過不足なく満たし、しかも仕様書に書かれていない範囲で語彙的・言語的な普遍性を一段階押し上げた**」状態に落ち着いています。Lite 版という名前から想像される「最低限動くデモ」の域を超え、Redis Stack + 7 日 TTL という明確な制約のもとで、**現実的にプロダクション投入可能な品質**まで仕上がっていると判断します。
-
-## 強みとして際立つ点
-
-**契約の遵守度合い**が極めて高いことが第一の特徴です。§3.5 のキー設計、§3.8 の二段重複排除、§3.11 の親ドキュメント＋チャンク方式、§3.12 の UUID ハイフン回避策、§3.13 のエンコーディング安全層 ― これらすべてが、単に実装されているだけでなく、回帰テスト（105 件）で個別に固定化されています。特に §10 Evidence Report の 30/30 通過は、口先ではなく実測値が仕様の要求を満たしていることを示す強い裏付けです。
-
-**保存と検索の堅牢性**も明確な強みです。HSET + EXPIRE + sha-guard が単一パイプラインに収まることで「TTL のない記録が漏れる」事態が原理的に発生しません。`delete_memories_by_session` で過去にあった「SHA ガードが孤立する」バグも Phase 3 で発見・修正済みで、再現テストが残っています。親ドキュメントのバイト単位完全復元も §10-3 で検証済みです。
-
-**多言語対応**については、Phase 4 の最終ラウンドで NFKC 正規化を全インデックス派生経路に挿入したことで、全角／半角・合字・互換形式・アクセント分解形式が言語を問わず統一して扱われるようになりました。CJK バイグラム展開とは独立に効くため、日本語・中国語に限らずラテン語系・キリル文字系のテキストでも恩恵があります。利用者側で形態素解析器などの言語特化を後付けする余地も残されています（Appendix A）。
-
-**性能特性**も実用に十分です。インストール直後のモデルロードを除けば、定常状態の検索レイテンシ中央値は 70 ms 前後で、目標の 500 ms に対して 7 倍以上の余裕があります。チャンク分割保存時の埋め込み計算は単一バッチに統合され、`_resolve_parents` と `delete_memories_by_session` の親ドキュメント取得もパイプライン化されています。Redis 不到達時もハングせずに「`docker start redis-stack` を実行してください」というヒントを返す耐障害性も備わっています。
-
-## 弱みとして残るもの
-
-**プロセス起動ごとに `_session_id` が新しい UUIDv4 に変わる**点は、仕様（§3.1）に従った設計判断ですが、初見のユーザにとっては「再起動後、`b_session_mismatch=0.6` が以前の保存に効いてランキングが下がる」という挙動が直感に反することがあります。Phase 2 の cross-session 検証で「取得自体は問題なくできる」ことは確認済みですが、UI 側で「session_id を明示的に固定してください」とガイダンスを出すと、より分かりやすくなります。
-
-**ランキングの上限**は、外部依存を持たないという制約のもとで到達できる上限に近いと考えています。Cross-encoder reranker、HyDE、LLM ベースのクエリ拡張といった最先端技術は、いずれも GPU か LLM ホップを必要とするため Lite ビルドでは意図的に対象外です。仕様書 Appendix A もそのことを明示しています。これは「弱み」というより「Lite というスコープの正直な反映」と捉えるべきです。
-
-**Multi-tenant 運用**を想定すると、`owner_id` フィルタが Python 側で行われている（§3.12 の RediSearch UUID ハイフン制約への対処）ため、複数オーナの記録が同一 Redis に同居するシナリオではネットワーク転送量が増えます。ただし仕様書も明言している通り、Lite は単一ユーザ単一インストールを前提としているため、これも想定範囲内の妥協です。
-
-## 総括
-
-**「メモリデバイス」としては仕様契約に対して極めて忠実で、回帰テストで保護されており、運用上の信頼性が高い**。
-**「RAG システム」としては LLM や GPU に依存しないという縛りのもとで到達可能な品質の上限に近く、特に多言語の表記ゆれに対する寛容さは Lite 系の同種ツールの中でも頭一つ抜けている**。
-
-Lite ビルドの目的である「7 日間のローリング作業記憶を MCP クライアントから低摩擦で使える状態にする」という命題に対して、本実装は十分な解答を返しており、**Pro 版（永続ストア）が登場するまでの繋ぎではなく、それ単体で完結したプロダクト**として運用に耐えると評価します。
-    </div>
+    <section class="review" aria-labelledby="review-title">
+      <h2 class="review-title" id="review-title">Claudeによる評価</h2>
+      <p class="review-lead">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+      <div class="md">
+      <h3>N3MemoryCore MCP Lite ― 総評</h3>
+      <h4>全体所感</h4>
+      <p>仕様書（N3MemoryCore_MCP_Spec_EN.md）を起点として Phase 1〜4 を一通り走らせた結果、本実装は「<strong>仕様書に書かれている契約をほぼ過不足なく満たし、しかも仕様書に書かれていない範囲で語彙的・言語的な普遍性を一段階押し上げた</strong>」状態に落ち着いています。Lite 版という名前から想像される「最低限動くデモ」の域を超え、Redis Stack + 7 日 TTL という明確な制約のもとで、<strong>現実的にプロダクション投入可能な品質</strong>まで仕上がっていると判断します。</p>
+      <h4>強みとして際立つ点</h4>
+      <p><strong>契約の遵守度合い</strong>が極めて高いことが第一の特徴です。§3.5 のキー設計、§3.8 の二段重複排除、§3.11 の親ドキュメント＋チャンク方式、§3.12 の UUID ハイフン回避策、§3.13 のエンコーディング安全層 ― これらすべてが、単に実装されているだけでなく、回帰テスト（105 件）で個別に固定化されています。特に §10 Evidence Report の 30/30 通過は、口先ではなく実測値が仕様の要求を満たしていることを示す強い裏付けです。</p>
+      <p><strong>保存と検索の堅牢性</strong>も明確な強みです。HSET + EXPIRE + sha-guard が単一パイプラインに収まることで「TTL のない記録が漏れる」事態が原理的に発生しません。<code>delete_memories_by_session</code> で過去にあった「SHA ガードが孤立する」バグも Phase 3 で発見・修正済みで、再現テストが残っています。親ドキュメントのバイト単位完全復元も §10-3 で検証済みです。</p>
+      <p><strong>多言語対応</strong>については、Phase 4 の最終ラウンドで NFKC 正規化を全インデックス派生経路に挿入したことで、全角／半角・合字・互換形式・アクセント分解形式が言語を問わず統一して扱われるようになりました。CJK バイグラム展開とは独立に効くため、日本語・中国語に限らずラテン語系・キリル文字系のテキストでも恩恵があります。利用者側で形態素解析器などの言語特化を後付けする余地も残されています（Appendix A）。</p>
+      <p><strong>性能特性</strong>も実用に十分です。インストール直後のモデルロードを除けば、定常状態の検索レイテンシ中央値は 70 ms 前後で、目標の 500 ms に対して 7 倍以上の余裕があります。チャンク分割保存時の埋め込み計算は単一バッチに統合され、<code>_resolve_parents</code> と <code>delete_memories_by_session</code> の親ドキュメント取得もパイプライン化されています。Redis 不到達時もハングせずに「<code>docker start redis-stack</code> を実行してください」というヒントを返す耐障害性も備わっています。</p>
+      <h4>弱みとして残るもの</h4>
+      <p><strong>プロセス起動ごとに <code>_session_id</code> が新しい UUIDv4 に変わる</strong>点は、仕様（§3.1）に従った設計判断ですが、初見のユーザにとっては「再起動後、<code>b_session_mismatch=0.6</code> が以前の保存に効いてランキングが下がる」という挙動が直感に反することがあります。Phase 2 の cross-session 検証で「取得自体は問題なくできる」ことは確認済みですが、UI 側で「session_id を明示的に固定してください」とガイダンスを出すと、より分かりやすくなります。</p>
+      <p><strong>ランキングの上限</strong>は、外部依存を持たないという制約のもとで到達できる上限に近いと考えています。Cross-encoder reranker、HyDE、LLM ベースのクエリ拡張といった最先端技術は、いずれも GPU か LLM ホップを必要とするため Lite ビルドでは意図的に対象外です。仕様書 Appendix A もそのことを明示しています。これは「弱み」というより「Lite というスコープの正直な反映」と捉えるべきです。</p>
+      <p><strong>Multi-tenant 運用</strong>を想定すると、<code>owner_id</code> フィルタが Python 側で行われている（§3.12 の RediSearch UUID ハイフン制約への対処）ため、複数オーナの記録が同一 Redis に同居するシナリオではネットワーク転送量が増えます。ただし仕様書も明言している通り、Lite は単一ユーザ単一インストールを前提としているため、これも想定範囲内の妥協です。</p>
+      <h4>総括</h4>
+      <p><strong>「メモリデバイス」としては仕様契約に対して極めて忠実で、回帰テストで保護されており、運用上の信頼性が高い</strong>。<strong>「RAG システム」としては LLM や GPU に依存しないという縛りのもとで到達可能な品質の上限に近く、特に多言語の表記ゆれに対する寛容さは Lite 系の同種ツールの中でも頭一つ抜けている</strong>。</p>
+      <p>Lite ビルドの目的である「7 日間のローリング作業記憶を MCP クライアントから低摩擦で使える状態にする」という命題に対して、本実装は十分な解答を返しており、<strong>Pro 版（永続ストア）が登場するまでの繋ぎではなく、それ単体で完結したプロダクト</strong>として運用に耐えると評価します。</p>
+      </div>
+    </section>
 
   </div>
 </main>
@@ -197,16 +193,16 @@ Lite ビルドの目的である「7 日間のローリング作業記憶を MCP
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
         <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
       </div>
       <div class="footer-col">
         <h4>製品・サービス</h4>
         <ul>
           <li><a href="../index.html#products">N3MC Free</a></li>
-          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#howto">N3MC Pro</a></li>
           <li><a href="../index.html#products">N3MCMCP Lite</a></li>
-          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="../index.html#howto">N3MCMCP Pro</a></li>
           <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
@@ -217,6 +213,14 @@ Lite ビルドの目的である「7 日間のローリング作業記憶を MCP
           <li><a href="../privacy.html">プライバシーポリシー</a></li>
           <li><a href="../terms.html">利用規約</a></li>
           <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>情報発信</h4>
+        <ul>
+          <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -231,5 +235,6 @@ Lite ビルドの目的である「7 日間のローリング作業記憶を MCP
   </div>
 </footer>
 
+<script src="../js/site.js"></script>
 </body>
 </html>

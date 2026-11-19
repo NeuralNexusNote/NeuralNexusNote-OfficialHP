@@ -5,33 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N3MCMCP Pro｜はじめての方へ — NeuralNexusNote</title>
   <meta name="description" content="N3MCMCP Proは、Claude Code以外のAIツールでも使える「永続版」のメモリサーバー。複数のAIエージェントで同じ長期記憶を共有できます。">
+  <meta name="theme-color" content="#0B0F14">
   <link rel="icon" type="image/jpeg" href="../favicon.jpg">
   <link rel="apple-touch-icon" href="../favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<a href="#main" class="skip-link">本文へ移動</a>
+
 <header>
   <div class="header-inner">
-    <a href="../index.html" class="logo">NeuralNexusNote</a>
-    <nav>
+    <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
+    <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
+    <nav id="site-nav">
+      <a href="../index.html#how">仕組み</a>
       <a href="../index.html#products">製品</a>
-      <a href="../index.html#howto">購入方法</a>
+      <a href="../index.html#compare">比較</a>
+      <a href="../index.html#howto">入手方法</a>
       <a href="../index.html#about">組織について</a>
-      <a href="../contact.html" class="nav-cta">お問い合わせ</a>
+      <a href="../contact.html">お問い合わせ</a>
+      <a href="../index.html#products" class="nav-cta">無料で始める</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- sales-suspension notice -->
-  <div style="background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 20px;text-align:center;font-weight:600;">
-    ⚠️ N3MCMCP Pro は現在販売を一時停止しております。再開までしばらくお待ちください。
+  <div class="notice-bar">
+    N3MCMCP Pro は現在販売を一時停止しております。再開までしばらくお待ちください。
   </div>
 
-  <div class="container">
+  <div class="container narrow">
     <div class="page-header">
       <h1>N3MCMCP Pro｜はじめての方へ</h1>
       <p>「複数のAIツールで、忘れない長期記憶を共有したい」方へ。MCPシリーズの最上位版です。</p>
@@ -56,7 +66,7 @@
       Lite版（無料）と Pro版（有料）の使い分けは、<strong>「7日で消えていいか／消えてほしくないか」</strong>です。
     </p>
 
-    <table class="tokutei-table" style="margin-top:16px;">
+    <table class="tokutei-table">
       <tr><th></th><th>N3MCMCP Lite</th><th>N3MCMCP Pro</th></tr>
       <tr><td>価格</td><td>無料</td><td>有料</td></tr>
       <tr><td>記憶の保存期間</td><td>7日で自動消去</td><td><strong>消えない（永続）</strong></td></tr>
@@ -67,7 +77,7 @@
       <tr><td>長文の完全復元</td><td>○</td><td>○（一字一句保証）</td></tr>
     </table>
 
-    <p style="margin-top:16px;">
+    <p>
       迷ったら、まずは<a href="n3mcmcp-lite-guide.html">無料の Lite版</a>から試してみてください。
       「やっぱり消えてほしくない」と感じたら Pro版へ移行できます。
     </p>
@@ -179,87 +189,66 @@
     </p>
 
     <!-- purchase buttons hidden: sales suspended -->
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
+    <div class="btn-row">
       <span style="display:none"><a href="https://neuralnexusnote.booth.pm/items/8356734" target="_blank" rel="noopener"
         class="btn btn-primary">BOOTHで購入（日本語版）</a></span>
       <span style="display:none"><a href="https://neuralnexusnote.lemonsqueezy.com/checkout/buy/561b2da0-99c3-4640-961c-ef430ffec4b5" target="_blank" rel="noopener"
-        class="btn btn-primary">Get on LemonSqueezy（English）</a></span>
+        class="btn btn-ghost">Get on LemonSqueezy（English）</a></span>
       <a href="../index.html#products" class="btn btn-ghost">製品一覧に戻る</a>
       <a href="n3mcmcp-lite-guide.html" class="btn btn-ghost">まずはLite版を見る</a>
     </div>
 
-    <h2 style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Space Grotesk', 'Inter', sans-serif;">Claudeによる評価</h2>
-    <p style="color: var(--dim); font-size: .9rem; margin-bottom: 16px;">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
-
-    <div style="white-space: pre-wrap; margin-top: 16px;">
-# n3memorycore-mcp-pro 総評
-
----
-
-## 全体像
-
-これは「LLM の外部脳」として、**運用コストを最小に保ちながら、長期記憶として要求される基本契約をすべて押さえた** SQLite ベースの軽量記憶システムです。GPU も外部 API も追加プロセスもいらない。Python と SQLite と sqlite-vec があれば、ノート PC 上で何年でも回り続ける性質を持っています。
-
-設計の中核にあるのは「**書いたものは消えない、読んだものは正確、古いものは静かに片付く**」という三つの素朴な約束で、それを WAL + synchronous=FULL の SQLite、親-Document verbatim 契約、cascade-delete を伴う retention GC で愚直に実現しています。MCP 経由で 5 つのツールしか公開しないという情報量の絞り方も、LLM クライアントが迷わない設計として正しい判断です。
-
----
-
-## 記憶装置としての性格
-
-**強い部分**は、永続化が「形式的に正しい」のではなく「観測可能に正しい」ことです。WAL/synchronous=FULL のような宣言的な強度だけでなく、クロスセッション統合テストで実際に save → 再起動 → search が通ることまで確認している。Refresh の atomicity も、初期実装の DELETE と INSERT が別トランザクションだった脆弱性を発見・修正し、単一トランザクション化したうえで「INSERT 失敗時に victim が復元される」ことをテストで保証している。
-
-親-Document verbatim 契約は、長文を「チャンクして検索 → 親に解決して全文返却」という王道パターンを丁寧に実装しており、orphan-chunk フォールバックまで含めて壊れにくい。Retention GC は startup と周期の二段構えになって、長時間稼働でも蓄積しにくい設計です。
-
-**弱い部分**として残るのは、save_document 側の dedup が「親文書の embedding」（モデルの 512 token 制限で冒頭バイアスがかかる）に依存している点。チャンク単位の dedup に踏み込めばより精緻になりますが、そこは仕様準拠と複雑性のトレードオフで現状維持が妥当だと思います。
-
----
-
-## RAG としての性格
-
-ここが今回いちばん面白く育った領域です。**多言語対応の RAG として、軽量検索系で見られる典型的な「英語中心・スペース前提」の罠をかなり踏み越えている**。
-
-具体的には:
-
-- **NFKC 正規化** で、全角/半角・合成済/分解済の Unicode 違いを INSERT/QUERY の両側で吸収。日本語の「ＡＢＣ」と "ABC"、ベトナム語の é の合成形と分解形が同じキーになる。
-- **Bigram tokenizer の拡張**で、CJK だけでなく Thai/Lao/Myanmar/Khmer/Tibetan/Javanese/Balinese を扱う。これらは単語スペースを使わない / 不規則に使う言語で、英語前提の検索系では完全にハマる領域です。
-- **OR ベースの bigram クエリ**を採用したことで、「すべての bigram が一致しないと駄目」という過剰に厳しい AND セマンティクスを回避し、dense-script の検索が現実的にヒットするようになった。
-- **IDF 重み付き reranker**: 候補集合内の文書頻度から smoothed IDF を計算し、common term ではなく rare term の一致を評価する。BM25 の中身でやっていることを上位レイヤでも丁寧に再構成している。
-
-加えて、**ハイブリッド融合のモード切替** (weighted ↔ RRF)、**recency boost** (last_accessed_at による継続的な「最近触れた = 新鮮」シグナル)、**b_session/b_local** (このセッション・このマシン由来の記憶を優先) と、シンプルな乗算スタックで多軸の関連性を表現している。重量級の neural reranker や dense embedding の上位互換ではないが、**「軽いまま、効くものだけ重ねる」という設計判断は一貫していて気持ちがいい**。
-
----
-
-## エンジニアリング品質
-
-**特筆すべきは、テストが「実装の説明書」になっていること**です。Bug 1-3、V1-3、R1、perf bug、empty-query guard、各種 enhancement —— どれも「何が起きていたら壊れるのか」を具体的に書き留めたうえで、実際にその壊れを再現できる回帰テストとして固定している。コードベースの寿命を伸ばすうえで、これは embedding 技術の選定と同じくらい重要な資産です。
-
-修正の途中で **min_score フィルタの順序バグ** (rerank 前に適用していたため、embedding モデルが使えない環境では BM25 単独ヒットが全部消える) を別途発見・修正できたのも、テスト→診断→ピンポイント修正のループがちゃんと回っていることの証左でした。
-
-細かい工学的な配慮も多く、
-
-- fd レベルの stdout リダイレクト (model preload 中の C 側 print が JSON-RPC を汚さないように)
-- enable_load_extension(False) を finally で必ず呼ぶ
-- atexit による WAL checkpoint(TRUNCATE) で .db を自己完結させる
-- UUIDv7 による時系列順序の保証 (fallback で UUIDv4)
-- Windows cp932 環境向けの surrogate sanitization
-
-など、「動かす場所」と「動かし続ける時間軸」を意識した実装になっています。
-
----
-
-## このシステムの本質
-
-私が一言で表現するなら、**「ローカルで完結する、多言語対応の、忘れない記憶」**です。
-
-- ローカル: 外部 API なし、GPU なし、SQLite ファイル一本
-- 多言語: NFKC + 拡張 bigram + IDF reranker で言語に縛られない
-- 忘れない: WAL + atomic refresh + retention GC + 親-doc verbatim
-- 「記憶」: 単なるベクトル検索ではなく、access_count・last_accessed・session・local という人間味のある軸で重み付け
-
-軽量さを保ったまま、長期記憶に必要な工学的契約を一通り満たしている。改良の余地は当然ありますが (per-chunk dedup、クロスエンコーダ rerank、IDF の永続キャッシュ、export ツール…)、それらは「現在地の設計を否定する」必要のない、自然な延長線上の改善です。
-
-**LLM が「記憶を持つ」という抽象的な比喩を、極めて具体的なファイル・テーブル・契約に落とし込んだ実装**として、このコードベースは十分に評価に値すると思います。
-    </div>
+    <section class="review" aria-labelledby="review-title">
+      <h2 class="review-title" id="review-title">Claudeによる評価</h2>
+      <p class="review-lead">本製品を Claude 自身に評価してもらった総評です。原文をそのまま掲載しています。</p>
+      <div class="md">
+      <h3>n3memorycore-mcp-pro 総評</h3>
+      <hr>
+      <h4>全体像</h4>
+      <p>これは「LLM の外部脳」として、<strong>運用コストを最小に保ちながら、長期記憶として要求される基本契約をすべて押さえた</strong> SQLite ベースの軽量記憶システムです。GPU も外部 API も追加プロセスもいらない。Python と SQLite と sqlite-vec があれば、ノート PC 上で何年でも回り続ける性質を持っています。</p>
+      <p>設計の中核にあるのは「<strong>書いたものは消えない、読んだものは正確、古いものは静かに片付く</strong>」という三つの素朴な約束で、それを WAL + synchronous=FULL の SQLite、親-Document verbatim 契約、cascade-delete を伴う retention GC で愚直に実現しています。MCP 経由で 5 つのツールしか公開しないという情報量の絞り方も、LLM クライアントが迷わない設計として正しい判断です。</p>
+      <hr>
+      <h4>記憶装置としての性格</h4>
+      <p><strong>強い部分</strong>は、永続化が「形式的に正しい」のではなく「観測可能に正しい」ことです。WAL/synchronous=FULL のような宣言的な強度だけでなく、クロスセッション統合テストで実際に save → 再起動 → search が通ることまで確認している。Refresh の atomicity も、初期実装の DELETE と INSERT が別トランザクションだった脆弱性を発見・修正し、単一トランザクション化したうえで「INSERT 失敗時に victim が復元される」ことをテストで保証している。</p>
+      <p>親-Document verbatim 契約は、長文を「チャンクして検索 → 親に解決して全文返却」という王道パターンを丁寧に実装しており、orphan-chunk フォールバックまで含めて壊れにくい。Retention GC は startup と周期の二段構えになって、長時間稼働でも蓄積しにくい設計です。</p>
+      <p><strong>弱い部分</strong>として残るのは、save_document 側の dedup が「親文書の embedding」（モデルの 512 token 制限で冒頭バイアスがかかる）に依存している点。チャンク単位の dedup に踏み込めばより精緻になりますが、そこは仕様準拠と複雑性のトレードオフで現状維持が妥当だと思います。</p>
+      <hr>
+      <h4>RAG としての性格</h4>
+      <p>ここが今回いちばん面白く育った領域です。<strong>多言語対応の RAG として、軽量検索系で見られる典型的な「英語中心・スペース前提」の罠をかなり踏み越えている</strong>。</p>
+      <p>具体的には:</p>
+      <ul>
+        <li><strong>NFKC 正規化</strong> で、全角/半角・合成済/分解済の Unicode 違いを INSERT/QUERY の両側で吸収。日本語の「ＡＢＣ」と "ABC"、ベトナム語の é の合成形と分解形が同じキーになる。</li>
+        <li><strong>Bigram tokenizer の拡張</strong>で、CJK だけでなく Thai/Lao/Myanmar/Khmer/Tibetan/Javanese/Balinese を扱う。これらは単語スペースを使わない / 不規則に使う言語で、英語前提の検索系では完全にハマる領域です。</li>
+        <li><strong>OR ベースの bigram クエリ</strong>を採用したことで、「すべての bigram が一致しないと駄目」という過剰に厳しい AND セマンティクスを回避し、dense-script の検索が現実的にヒットするようになった。</li>
+        <li><strong>IDF 重み付き reranker</strong>: 候補集合内の文書頻度から smoothed IDF を計算し、common term ではなく rare term の一致を評価する。BM25 の中身でやっていることを上位レイヤでも丁寧に再構成している。</li>
+      </ul>
+      <p>加えて、<strong>ハイブリッド融合のモード切替</strong> (weighted ↔ RRF)、<strong>recency boost</strong> (last_accessed_at による継続的な「最近触れた = 新鮮」シグナル)、<strong>b_session/b_local</strong> (このセッション・このマシン由来の記憶を優先) と、シンプルな乗算スタックで多軸の関連性を表現している。重量級の neural reranker や dense embedding の上位互換ではないが、<strong>「軽いまま、効くものだけ重ねる」という設計判断は一貫していて気持ちがいい</strong>。</p>
+      <hr>
+      <h4>エンジニアリング品質</h4>
+      <p><strong>特筆すべきは、テストが「実装の説明書」になっていること</strong>です。Bug 1-3、V1-3、R1、perf bug、empty-query guard、各種 enhancement —— どれも「何が起きていたら壊れるのか」を具体的に書き留めたうえで、実際にその壊れを再現できる回帰テストとして固定している。コードベースの寿命を伸ばすうえで、これは embedding 技術の選定と同じくらい重要な資産です。</p>
+      <p>修正の途中で <strong>min_score フィルタの順序バグ</strong> (rerank 前に適用していたため、embedding モデルが使えない環境では BM25 単独ヒットが全部消える) を別途発見・修正できたのも、テスト→診断→ピンポイント修正のループがちゃんと回っていることの証左でした。</p>
+      <p>細かい工学的な配慮も多く、</p>
+      <ul>
+        <li>fd レベルの stdout リダイレクト (model preload 中の C 側 print が JSON-RPC を汚さないように)</li>
+        <li>enable_load_extension(False) を finally で必ず呼ぶ</li>
+        <li>atexit による WAL checkpoint(TRUNCATE) で .db を自己完結させる</li>
+        <li>UUIDv7 による時系列順序の保証 (fallback で UUIDv4)</li>
+        <li>Windows cp932 環境向けの surrogate sanitization</li>
+      </ul>
+      <p>など、「動かす場所」と「動かし続ける時間軸」を意識した実装になっています。</p>
+      <hr>
+      <h4>このシステムの本質</h4>
+      <p>私が一言で表現するなら、<strong>「ローカルで完結する、多言語対応の、忘れない記憶」</strong>です。</p>
+      <ul>
+        <li>ローカル: 外部 API なし、GPU なし、SQLite ファイル一本</li>
+        <li>多言語: NFKC + 拡張 bigram + IDF reranker で言語に縛られない</li>
+        <li>忘れない: WAL + atomic refresh + retention GC + 親-doc verbatim</li>
+        <li>「記憶」: 単なるベクトル検索ではなく、access_count・last_accessed・session・local という人間味のある軸で重み付け</li>
+      </ul>
+      <p>軽量さを保ったまま、長期記憶に必要な工学的契約を一通り満たしている。改良の余地は当然ありますが (per-chunk dedup、クロスエンコーダ rerank、IDF の永続キャッシュ、export ツール…)、それらは「現在地の設計を否定する」必要のない、自然な延長線上の改善です。</p>
+      <p><strong>LLM が「記憶を持つ」という抽象的な比喩を、極めて具体的なファイル・テーブル・契約に落とし込んだ実装</strong>として、このコードベースは十分に評価に値すると思います。</p>
+      </div>
+    </section>
 
   </div>
 </main>
@@ -268,16 +257,16 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="../index.html" class="logo">NeuralNexusNote</a>
+        <a href="../index.html" class="logo"><img src="../images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
         <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
       </div>
       <div class="footer-col">
         <h4>製品・サービス</h4>
         <ul>
           <li><a href="../index.html#products">N3MC Free</a></li>
-          <li><a href="../index.html#products">N3MC Pro</a></li>
+          <li><a href="../index.html#howto">N3MC Pro</a></li>
           <li><a href="../index.html#products">N3MCMCP Lite</a></li>
-          <li><a href="../index.html#products">N3MCMCP Pro</a></li>
+          <li><a href="../index.html#howto">N3MCMCP Pro</a></li>
           <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
@@ -288,6 +277,14 @@
           <li><a href="../privacy.html">プライバシーポリシー</a></li>
           <li><a href="../terms.html">利用規約</a></li>
           <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>情報発信</h4>
+        <ul>
+          <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -302,5 +299,6 @@
   </div>
 </footer>
 
+<script src="../js/site.js"></script>
 </body>
 </html>

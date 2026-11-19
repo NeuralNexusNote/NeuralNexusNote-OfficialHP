@@ -5,28 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>利用規約 | NeuralNexusNote</title>
   <meta name="description" content="NeuralNexusNoteの利用規約です。">
+  <meta name="theme-color" content="#0B0F14">
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <link rel="apple-touch-icon" href="favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<a href="#main" class="skip-link">本文へ移動</a>
+
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">NeuralNexusNote</a>
-    <nav>
+    <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
+    <button type="button" class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
+    <nav id="site-nav">
+      <a href="index.html#how">仕組み</a>
       <a href="index.html#products">製品</a>
-      <a href="index.html#howto">購入方法</a>
+      <a href="index.html#compare">比較</a>
+      <a href="index.html#howto">入手方法</a>
       <a href="index.html#about">組織について</a>
-      <a href="contact.html" class="nav-cta">お問い合わせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="index.html#products" class="nav-cta">無料で始める</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <div class="container">
+<main id="main">
+  <div class="container narrow">
     <div class="page-header">
       <h1>利用規約</h1>
       <p>最終更新日: 2026年4月26日</p>
@@ -124,7 +134,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">NeuralNexusNote</a>
+        <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" width="28" height="28">NeuralNexusNote</a>
         <p>AIアシスタントに永続的な記憶を。<br>AIツールの開発・販売を行う組織です。</p>
       </div>
       <div class="footer-col">
@@ -146,6 +156,14 @@
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </div>
+      <div class="footer-col">
+        <h4>情報発信</h4>
+        <ul>
+          <li><a href="https://x.com/NeuralNexusNote" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://zenn.dev/arnolfjp" target="_blank" rel="noopener">Zenn</a></li>
+          <li><a href="https://github.com/NeuralNexusNote" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 NeuralNexusNote. All rights reserved.</p>
@@ -158,5 +176,6 @@
   </div>
 </footer>
 
+<script src="js/site.js"></script>
 </body>
 </html>
