@@ -125,7 +125,7 @@ cd n3mc-free
 pip install -e .          # editable install
 ```
 
-要件: Python 3.10+。サーバー初回起動時に埋め込みモデル（`intfloat/multilingual-e5-base`、約 470 MB）が初回ダウンロードされるため、2〜10 分の一回限りの遅延が発生します。
+要件: Python 3.10+。サーバー初回起動時に埋め込みモデル（`intfloat/multilingual-e5-base`、約 1.1 GB）が初回ダウンロードされるため、2〜10 分の一回限りの遅延が発生します。
 
 #### 2. Claude Code に接続する
 
@@ -187,7 +187,7 @@ cat ~/.n3mc/.memory/audit.log | tail -3
 ユーザープロンプトごとに 1 行 JSON が追加されているはずです。空ならフックが発火していません — Step 3 の検証コマンドが `OK` を返すか、また編集対象が**ユーザーグローバル**の `~/.claude/settings.json`（プロジェクトローカルの `.claude/settings.json` ではない）になっているかを確認してください。
 
 **初回 `n3mc --search` が空を返すが、その後は動く**
-`intfloat/multilingual-e5-base` モデル（約 470 MB）が初回呼び出し時にダウンロード中です。2〜10 分待ってからリトライしてください。
+`intfloat/multilingual-e5-base` モデル（約 1.1 GB）が初回呼び出し時にダウンロード中です。2〜10 分待ってからリトライしてください。
 
 ### セットアップ後の体験
 
