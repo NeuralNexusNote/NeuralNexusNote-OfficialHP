@@ -31,7 +31,7 @@
 ### Step 1 — Redis Stack を起動
 
 ```bash
-docker run -d --name redis-stack -p 6379:6379 redis/redis-stack-server:latest
+docker run -d --name redis-stack -p 127.0.0.1:6379:6379 redis/redis-stack-server:latest
 # 2 回目以降は: `docker start redis-stack`
 ```
 
@@ -88,7 +88,7 @@ Step 2 終了時点で `n3mc-workingmemory` コマンドが `PATH` に通りま�
 1. **`localhost:6379` で動く Redis Stack** — Lite 版は Redis + RediSearch にメモリを保存します。Docker が最も簡単です：
    ```bash
    # 初回のみ（コンテナを作成）：
-   docker run -d --name redis-stack -p 6379:6379 redis/redis-stack-server:latest
+   docker run -d --name redis-stack -p 127.0.0.1:6379:6379 redis/redis-stack-server:latest
 
    # 2 回目以降（コンテナは既存なので start するだけ）：
    docker start redis-stack
@@ -258,7 +258,7 @@ Docker を使うのが最も簡単です：
 
 ```bash
 # 初回のみ（コンテナを作成）：
-docker run -d --name redis-stack -p 6379:6379 redis/redis-stack-server:latest
+docker run -d --name redis-stack -p 127.0.0.1:6379:6379 redis/redis-stack-server:latest
 
 # 2 回目以降（コンテナは既存なので start するだけ）：
 docker start redis-stack
@@ -647,7 +647,7 @@ MCP の建付けの中で、この非決定性を回避する経路は **3 通�
 ```bash
 git clone https://github.com/<YOU>/n3mcmcp-lite
 cd n3mcmcp-lite
-docker run -d --name redis-stack -p 6379:6379 redis/redis-stack-server:latest
+docker run -d --name redis-stack -p 127.0.0.1:6379:6379 redis/redis-stack-server:latest
 python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\Activate.ps1
 pip install -e ".[dev]"
 pytest tests/ -q                                     # 全 105 テスト・温暖時 ~30 秒
