@@ -291,7 +291,7 @@ cd n3mcmcp-lite
 pip install -e .
 ```
 
-初回起動時に ~400MB の埋め込みモデルが Hugging Face から
+初回起動時に ~1.1 GB の埋め込みモデルが Hugging Face から
 `~/.cache/huggingface/` にダウンロードされます。
 
 ## クライアント設定
